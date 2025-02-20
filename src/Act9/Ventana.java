@@ -5,12 +5,15 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -154,21 +157,64 @@ public class Ventana extends JFrame{
 		descripcion.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
 		regis.add(descripcion);
 		
+		JLabel preferencias = new JLabel("Preferencias");
+		preferencias.setSize(200, 30);
+		preferencias.setLocation(40, 340);
+		preferencias.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		regis.add(preferencias);
 		
-		//olvido.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		JCheckBox prefe = new JCheckBox("Frio",false);
+		prefe.setSize(60, 30);
+		prefe.setLocation(40, 370);
+		prefe.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
+		//prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		regis.add(prefe);
 		
-		JLabel recordar = new JLabel("Recordarme");
-		recordar.setSize(200, 30);
-		recordar.setLocation(50, 280);
-		recordar.setHorizontalAlignment(JLabel.LEFT);
-		recordar.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
-		regis.add(recordar);
+		JCheckBox prefe1 = new JCheckBox("Calor",false);
+		prefe1.setSize(70, 30);
+		prefe1.setLocation(120, 370);
+		prefe1.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
+		//prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		regis.add(prefe1);
 		
+		JCheckBox prefe2 = new JCheckBox("Neutro",false);
+		prefe2.setSize(80, 30);
+		prefe2.setLocation(200, 370);
+		prefe2.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
+		//prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		regis.add(prefe2);
 		
-		String dataset [] = {"Camino Real","Centro"};
+		JLabel colonia = new JLabel("Elige la colonia donde vives");
+		colonia.setSize(300, 30);
+		colonia.setLocation(40, 420);
+		colonia.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		regis.add(colonia);
+		
+		String dataset [] = {" ","Camino Real","Centro","Chametla","Centenario","Progreso"};
 		
 		JComboBox colonias = new JComboBox(dataset);
+		colonias.setSize(120, 30);
+		colonias.setLocation(40, 450);
+		colonias.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
+		regis.add(colonias);
 		
+		JLabel terms = new JLabel("Terminos y Condiciones");
+		terms.setSize(300, 30);
+		terms.setLocation(40, 500);
+		terms.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		regis.add(terms);
+		
+		JRadioButton acepto = new JRadioButton("Acepto los términos",false);
+		acepto.setSize(140,20);
+		acepto.setLocation(40, 530);
+		acepto.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
+		regis.add(acepto);
+		
+		JRadioButton NoAcepto = new JRadioButton("No acepto los términos",false);
+		NoAcepto.setSize(150,20);
+		NoAcepto.setLocation(200, 530);
+		NoAcepto.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
+		regis.add(NoAcepto);
 		
 		
 		
@@ -177,6 +223,7 @@ public class Ventana extends JFrame{
  
 		return regis;
 	}
+
 	
 	
 
