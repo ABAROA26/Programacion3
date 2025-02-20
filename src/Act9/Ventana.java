@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -16,7 +19,7 @@ public class Ventana extends JFrame{
 	public Ventana() {
 	
 		this.setVisible(true);
-		this.setSize(500, 500);
+		this.setSize(500, 700);
 		this.setLocationRelativeTo(null);
 		
 		this.setTitle("Login");
@@ -28,7 +31,8 @@ public class Ventana extends JFrame{
 		
 		this.setResizable(true);
 		
-		this.add(this.login());
+		//this.add(this.login());
+		this.add(this.registro());
 		this.repaint(); 
 		
 		
@@ -72,7 +76,7 @@ public class Ventana extends JFrame{
 		contraseña.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
 		panel.add(contraseña);
 		
-		JTextField ecribeContraseña = new JTextField();
+		JPasswordField ecribeContraseña =  new JPasswordField();
 		ecribeContraseña.setSize(350, 30);
 		ecribeContraseña.setLocation(40, 250);
 		ecribeContraseña.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
@@ -84,6 +88,8 @@ public class Ventana extends JFrame{
 		olvido.setHorizontalAlignment(JLabel.RIGHT);
 		olvido.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
 		panel.add(olvido);
+		
+		//olvido.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		
 		JLabel recordar = new JLabel("Recordarme");
 		recordar.setSize(200, 30);
@@ -101,10 +107,78 @@ public class Ventana extends JFrame{
 		confirmar.setBounds(35, 288, 10, 10);
 		panel.add(confirmar);
 		
-		
 		return panel;
 		
 	}
+	
+	public JPanel registro() {
+		JPanel regis = new JPanel();
+		
+		regis.setBackground(Color.LIGHT_GRAY);
+		regis.setOpaque(true);
+		regis.setSize(500, 700);
+		regis.setLocation(0, 0);
+		regis.setLayout(null); //Poder colocar las cosas donde nosotros queramos
+		
+		
+		JLabel titulo = new JLabel("Registro");
+		titulo.setSize(100, 30);
+		//titulo.setOpaque(true);
+		//titulo.setBackground(Color.WHITE);
+		titulo.setLocation(200, 30);
+		titulo.setHorizontalAlignment(JLabel.CENTER);
+		titulo.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		regis.add(titulo);
+		
+		JLabel correo = new JLabel("Ingrese su nombre completo");
+		correo.setSize(300, 30);
+		correo.setLocation(40, 100);
+		correo.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		regis.add(correo);
+
+		JTextField escribeNombre = new JTextField();
+		escribeNombre.setSize(350, 30);
+		escribeNombre.setLocation(40, 130);
+		escribeNombre.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		regis.add(escribeNombre);
+		
+		JLabel contraseña = new JLabel("Descripcion Personal");
+		contraseña.setSize(200, 30);
+		contraseña.setLocation(40, 190);
+		contraseña.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		regis.add(contraseña);
+		
+		JTextArea descripcion =  new JTextArea();
+		descripcion.setSize(350, 100);
+		descripcion.setLocation(40, 220);
+		descripcion.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		regis.add(descripcion);
+		
+		
+		//olvido.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		
+		JLabel recordar = new JLabel("Recordarme");
+		recordar.setSize(200, 30);
+		recordar.setLocation(50, 280);
+		recordar.setHorizontalAlignment(JLabel.LEFT);
+		recordar.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
+		regis.add(recordar);
+		
+		
+		String dataset [] = {"Camino Real","Centro"};
+		
+		JComboBox colonias = new JComboBox(dataset);
+		
+		
+		
+		
+		
+		
+ 
+		return regis;
+	}
+	
+	
 
 	
 }
