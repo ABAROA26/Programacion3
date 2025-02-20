@@ -117,31 +117,33 @@ public class Ventana extends JFrame{
 	public JPanel registro() {
 		JPanel regis = new JPanel();
 		
-		regis.setBackground(Color.LIGHT_GRAY);
+		regis.setBackground(Color.PINK);
 		regis.setOpaque(true);
 		regis.setSize(500, 700);
 		regis.setLocation(0, 0);
 		regis.setLayout(null); //Poder colocar las cosas donde nosotros queramos
 		
 		
-		JLabel titulo = new JLabel("Registro");
-		titulo.setSize(100, 30);
-		//titulo.setOpaque(true);
-		//titulo.setBackground(Color.WHITE);
-		titulo.setLocation(200, 30);
+		JLabel titulo = new JLabel("Registrarse");
+		titulo.setSize(200, 50);
+		titulo.setOpaque(true);
+		titulo.setBackground(Color.CYAN);
+		titulo.setLocation(150, 30);
 		titulo.setHorizontalAlignment(JLabel.CENTER);
-		titulo.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		titulo.setFont(new Font("Baskerville Old Face",Font.BOLD,30));
 		regis.add(titulo);
 		
 		JLabel correo = new JLabel("Ingrese su nombre completo");
 		correo.setSize(300, 30);
 		correo.setLocation(40, 100);
 		correo.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		correo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
 		regis.add(correo);
 
 		JTextField escribeNombre = new JTextField();
 		escribeNombre.setSize(350, 30);
-		escribeNombre.setLocation(40, 130);
+		escribeNombre.setLocation(40, 135);
 		escribeNombre.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
 		regis.add(escribeNombre);
 		
@@ -149,11 +151,13 @@ public class Ventana extends JFrame{
 		contraseña.setSize(200, 30);
 		contraseña.setLocation(40, 190);
 		contraseña.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		contraseña.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
 		regis.add(contraseña);
 		
 		JTextArea descripcion =  new JTextArea();
 		descripcion.setSize(350, 100);
-		descripcion.setLocation(40, 220);
+		descripcion.setLocation(40, 230);
 		descripcion.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
 		regis.add(descripcion);
 		
@@ -161,25 +165,26 @@ public class Ventana extends JFrame{
 		preferencias.setSize(200, 30);
 		preferencias.setLocation(40, 340);
 		preferencias.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		preferencias.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
 		regis.add(preferencias);
 		
 		JCheckBox prefe = new JCheckBox("Frio",false);
 		prefe.setSize(60, 30);
-		prefe.setLocation(40, 370);
+		prefe.setLocation(40, 375);
 		prefe.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
-		//prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		regis.add(prefe);
 		
 		JCheckBox prefe1 = new JCheckBox("Calor",false);
 		prefe1.setSize(70, 30);
-		prefe1.setLocation(120, 370);
+		prefe1.setLocation(120, 375);
 		prefe1.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
 		//prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		regis.add(prefe1);
 		
 		JCheckBox prefe2 = new JCheckBox("Neutro",false);
 		prefe2.setSize(80, 30);
-		prefe2.setLocation(200, 370);
+		prefe2.setLocation(200, 375);
 		prefe2.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
 		//prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		regis.add(prefe2);
@@ -188,13 +193,15 @@ public class Ventana extends JFrame{
 		colonia.setSize(300, 30);
 		colonia.setLocation(40, 420);
 		colonia.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		colonia.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
 		regis.add(colonia);
 		
 		String dataset [] = {" ","Camino Real","Centro","Chametla","Centenario","Progreso"};
 		
 		JComboBox colonias = new JComboBox(dataset);
 		colonias.setSize(120, 30);
-		colonias.setLocation(40, 450);
+		colonias.setLocation(40, 460);
 		colonias.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
 		regis.add(colonias);
 		
@@ -202,21 +209,34 @@ public class Ventana extends JFrame{
 		terms.setSize(300, 30);
 		terms.setLocation(40, 500);
 		terms.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		terms.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
 		regis.add(terms);
 		
-		JRadioButton acepto = new JRadioButton("Acepto los términos",false);
+		JRadioButton acepto = new JRadioButton("Acepto los términos",true);
 		acepto.setSize(140,20);
-		acepto.setLocation(40, 530);
+		acepto.setLocation(40, 540);
 		acepto.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
 		regis.add(acepto);
 		
 		JRadioButton NoAcepto = new JRadioButton("No acepto los términos",false);
 		NoAcepto.setSize(150,20);
-		NoAcepto.setLocation(200, 530);
+		NoAcepto.setLocation(200, 540);
 		NoAcepto.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
 		regis.add(NoAcepto);
 		
+		ButtonGroup opcion = new ButtonGroup();
+		opcion.add(NoAcepto);
+		opcion.add(acepto);
 		
+		JButton acceder = new JButton();
+		acceder.setText("Crear Cuenta");
+		acceder.setLocation(150,590);
+		acceder.setSize(200, 50);
+		acceder.setOpaque(true);
+		acceder.setBackground(Color.CYAN);
+		acceder.setFont(new Font("Baskerville Old Face",Font.BOLD,25));
+		regis.add(acceder);
 		
 		
 		
