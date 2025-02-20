@@ -172,12 +172,15 @@ public class Ventana extends JFrame{
 		JCheckBox prefe = new JCheckBox("Frio",false);
 		prefe.setSize(60, 30);
 		prefe.setLocation(40, 375);
+		prefe.setOpaque(false);
 		prefe.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
 		regis.add(prefe);
 		
 		JCheckBox prefe1 = new JCheckBox("Calor",false);
 		prefe1.setSize(70, 30);
 		prefe1.setLocation(120, 375);
+		prefe1.setOpaque(false);
+
 		prefe1.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
 		//prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		regis.add(prefe1);
@@ -185,6 +188,8 @@ public class Ventana extends JFrame{
 		JCheckBox prefe2 = new JCheckBox("Neutro",false);
 		prefe2.setSize(80, 30);
 		prefe2.setLocation(200, 375);
+		prefe2.setOpaque(false);
+
 		prefe2.setFont(new Font("Baskerville Old Face",Font.BOLD,15));
 		//prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		regis.add(prefe2);
@@ -216,12 +221,16 @@ public class Ventana extends JFrame{
 		JRadioButton acepto = new JRadioButton("Acepto los términos",true);
 		acepto.setSize(140,20);
 		acepto.setLocation(40, 540);
+		acepto.setOpaque(false);
+
 		acepto.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
 		regis.add(acepto);
 		
 		JRadioButton NoAcepto = new JRadioButton("No acepto los términos",false);
 		NoAcepto.setSize(150,20);
 		NoAcepto.setLocation(200, 540);
+		NoAcepto.setOpaque(false);
+
 		NoAcepto.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
 		regis.add(NoAcepto);
 		
