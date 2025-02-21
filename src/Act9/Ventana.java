@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -22,7 +24,7 @@ public class Ventana extends JFrame{
 	public Ventana() {
 	
 		this.setVisible(true);
-		this.setSize(500, 700);
+		this.setSize(1000, 700);
 		this.setLocationRelativeTo(null);
 		
 		this.setTitle("Login");
@@ -35,7 +37,8 @@ public class Ventana extends JFrame{
 		this.setResizable(true);
 		
 		//this.add(this.login());
-		this.add(this.registro());
+		//this.add(this.registro());
+		this.add(this.tabla());
 		this.repaint(); 
 		
 		
@@ -253,6 +256,183 @@ public class Ventana extends JFrame{
 		return regis;
 	}
 
+	public JPanel tabla() {
+		JPanel tabla = new JPanel();
+		
+		tabla.setBackground(Color.PINK);
+		tabla.setOpaque(true);
+		tabla.setSize(1000, 700);
+		tabla.setLocation(0, 0);
+		tabla.setLayout(null); //Poder colocar las cosas donde nosotros queramos
+		
+		JLabel titulo = new JLabel("Bienvenidos");
+		titulo.setSize(300, 50);
+		titulo.setOpaque(false);
+		titulo.setBackground(Color.CYAN);
+		titulo.setLocation(350, 30);
+		titulo.setHorizontalAlignment(JLabel.CENTER);
+		titulo.setFont(new Font("Baskerville Old Face",Font.BOLD,50));
+		tabla.add(titulo);
+		
+		JLabel noUsuarios = new JLabel("No. Usuarios");
+		noUsuarios.setSize(200, 50);
+		noUsuarios.setOpaque(false);
+		noUsuarios.setBackground(Color.CYAN);
+		noUsuarios.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+		noUsuarios.setLocation(60, 120);
+		noUsuarios.setHorizontalAlignment(JLabel.CENTER);
+		noUsuarios.setFont(new Font("Baskerville Old Face",Font.BOLD,30));
+		tabla.add(noUsuarios);
+		
+		JLabel numero = new JLabel("100");
+		numero.setSize(200, 50);
+		numero.setOpaque(false);
+		numero.setBackground(Color.CYAN);
+		//numero.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+		numero.setLocation(60, 170);
+		numero.setHorizontalAlignment(JLabel.CENTER);
+		numero.setFont(new Font("Baskerville Old Face",Font.BOLD,30));
+		tabla.add(numero);
+		
+		JButton Descargar = new JButton();
+		Descargar.setText("Descargar");
+		Descargar.setLocation(655,240);
+		Descargar.setSize(125, 25);
+		Descargar.setOpaque(true);
+		Descargar.setBackground(Color.CYAN);
+		Descargar.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		tabla.add(Descargar);
+		
+		JButton añadir = new JButton();
+		añadir.setText("Añadir");
+		añadir.setLocation(785,240);
+		añadir.setSize(125, 25);
+		añadir.setOpaque(true);
+		añadir.setBackground(Color.CYAN);
+		añadir.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		tabla.add(añadir);
+		
+		
+		String titulos[] = {"ID","Nombre", "Apellido", "Edad","Estado"};
+		
+		String datos[][]= {
+				
+				  {"001", "Juan", "Martínez", "1991", "Casado"},
+				  {"002", "María", "González", "1997", "Soltera"},
+				  {"003", "Carlos", "Rodríguez", "1980", "Divorciado"},
+				  {"004", "Ana", "López", "1994", "Casada"},
+				  {"005", "Pedro", "Sánchez", "1986", "Casado"},
+				  {"006", "Laura", "Fernández", "1999", "Soltera"},
+				  {"007", "Miguel", "Pérez", "1983", "Casado"},
+				  {"008", "Sofia", "Díaz", "1996", "Soltera"},
+				  {"009", "Diego", "Torres", "1988", "Divorciado"},
+				  {"010", "Carmen", "Ruiz", "1992", "Casada"},
+				  {"011", "José", "García", "1977", "Casado"},
+				  {"012", "Paula", "Moreno", "2000", "Soltera"},
+				  {"013", "Alberto", "Jiménez", "1984", "Divorciado"},
+				  {"014", "Isabel", "Romero", "1989", "Casada"},
+				  {"015", "Roberto", "Navarro", "1981", "Casado"},
+				  {"016", "Elena", "Molina", "1998", "Soltera"},
+				  {"017", "Francisco", "Castro", "1975", "Casado"},
+				  {"018", "Lucía", "Ortiz", "1993", "Divorciada"},
+				  {"019", "Andrés", "Delgado", "1987", "Soltero"},
+				  {"020", "Marina", "Vargas", "1995", "Casada"},
+				  {"021", "Antonio", "Medina", "1979", "Casado"},
+				  {"022", "Clara", "Ramos", "1997", "Soltera"},
+				  {"023", "Javier", "Gil", "1990", "Divorciado"},
+				  {"024", "Beatriz", "Santos", "1994", "Casada"},
+				  {"025", "Manuel", "Guerrero", "1982", "Casado"},
+				  {"026", "Patricia", "Cruz", "1996", "Soltera"},
+				  {"027", "Ricardo", "Herrera", "1985", "Divorciado"},
+				  {"028", "Victoria", "Núñez", "1991", "Casada"},
+				  {"029", "Fernando", "Iglesias", "1978", "Casado"},
+				  {"030", "Silvia", "Reyes", "1999", "Soltera"},
+				  {"031", "Raúl", "Morales", "1986", "Casado"},
+				  {"032", "Natalia", "Vega", "1992", "Divorciada"},
+				  {"033", "Eduardo", "Campos", "1980", "Casado"},
+				  {"034", "Cristina", "Fuentes", "1997", "Soltera"},
+				  {"035", "Gabriel", "Silva", "1983", "Divorciado"},
+				  {"036", "Adriana", "Mendoza", "1994", "Casada"},
+				  {"037", "Pablo", "Luna", "1988", "Soltero"},
+				  {"038", "Mónica", "Rojas", "1996", "Soltera"},
+				  {"039", "Óscar", "Flores", "1981", "Casado"},
+				  {"040", "Daniela", "Acosta", "1993", "Divorciada"},
+				  {"041", "Jorge", "Benítez", "1977", "Casado"},
+				  {"042", "Andrea", "Cordero", "1998", "Soltera"},
+				  {"043", "Luis", "Aguilar", "1984", "Divorciado"},
+				  {"044", "Rosa", "Pacheco", "1990", "Casada"},
+				  {"045", "Emilio", "Vera", "1979", "Casado"},
+				  {"046", "Julia", "Soto", "1995", "Soltera"},
+				  {"047", "Marcos", "Valenzuela", "1987", "Divorciado"},
+				  {"048", "Diana", "Ríos", "1992", "Casada"},
+				  {"049", "Héctor", "Parra", "1982", "Casado"},
+				  {"050", "Valeria", "Miranda", "1997", "Soltera"},
+				  {"051", "Guillermo", "Escobar", "1980", "Divorciado"},
+				  {"052", "Carolina", "Bravo", "1994", "Casada"},
+				  {"053", "Alejandro", "Contreras", "1986", "Soltero"},
+				  {"054", "Teresa", "Guzmán", "1991", "Casada"},
+				  {"055", "Salvador", "Varela", "1978", "Casado"},
+				  {"056", "Pilar", "Quintero", "1996", "Soltera"},
+				  {"057", "Ramón", "Cervantes", "1983", "Divorciado"},
+				  {"058", "Alicia", "Aguirre", "1989", "Casada"},
+				  {"059", "Felipe", "Velasco", "1985", "Casado"},
+				  {"060", "Susana", "Castillo", "1998", "Soltera"},
+				  {"061", "Ignacio", "León", "1981", "Divorciado"},
+				  {"062", "Regina", "Espinoza", "1993", "Casada"},
+				  {"063", "Arturo", "Barrera", "1977", "Casado"},
+				  {"064", "Lorena", "Paredes", "1995", "Soltera"},
+				  {"065", "Sergio", "Zamora", "1984", "Divorciado"},
+				  {"066", "Mariana", "Méndez", "1990", "Casada"},
+				  {"067", "Vicente", "Ochoa", "1979", "Casado"},
+				  {"068", "Cecilia", "Duarte", "1997", "Soltera"},
+				  {"069", "Rafael", "Ibarra", "1982", "Divorciado"},
+				  {"070", "Gabriela", "Salazar", "1992", "Casada"},
+				  {"071", "Ernesto", "Valencia", "1976", "Casado"},
+				  {"072", "Sandra", "Estrada", "1994", "Soltera"},
+				  {"073", "Alfonso", "Arias", "1987", "Divorciado"},
+				  {"074", "Raquel", "Figueroa", "1991", "Casada"},
+				  {"075", "Hugo", "Cabrera", "1980", "Casado"},
+				  {"076", "Olivia", "Montes", "1996", "Soltera"},
+				  {"077", "Martín", "Rangel", "1983", "Divorciado"},
+				  {"078", "Ángela", "Balderas", "1989", "Casada"},
+				  {"079", "César", "Carrillo", "1978", "Casado"},
+				  {"080", "Leticia", "Zúñiga", "1998", "Soltera"},
+				  {"081", "Mario", "Villanueva", "1985", "Divorciado"},
+				  {"082", "Verónica", "Rosales", "1993", "Casada"},
+				  {"083", "Lorenzo", "Villarreal", "1981", "Casado"},
+				  {"084", "Rocío", "Cortés", "1995", "Soltera"},
+				  {"085", "Tomás", "Bautista", "1984", "Divorciado"},
+				  {"086", "Mercedes", "Calderón", "1990", "Casada"},
+				  {"087", "Armando", "Gallegos", "1979", "Casado"},
+				  {"088", "Blanca", "Tapia", "1997", "Soltera"},
+				  {"089", "Enrique", "Salgado", "1982", "Divorciado"},
+				  {"090", "Estela", "Juárez", "1992", "Casada"},
+				  {"091", "Gerardo", "Maldonado", "1977", "Casado"},
+				  {"092", "Karla", "Quintana", "1994", "Soltera"},
+				  {"093", "Rodrigo", "Camacho", "1986", "Divorciado"},
+				  {"094", "Yolanda", "Arellano", "1991", "Casada"},
+				  {"095", "Marco", "Carrasco", "1980", "Casado"},
+				  {"096", "Claudia", "Pineda", "1996", "Soltera"},
+				  {"097", "Leonardo", "Orozco", "1983", "Divorciado"},
+				  {"098", "Norma", "Aranda", "1988", "Casada"},
+				  {"099", "Ismael", "Andrade", "1981", "Casado"},
+				  {"100", "Rebeca", "Trujillo", "1995", "Soltera"}
+				
+				
+		};
+		
+		JTable tablas = new JTable(datos,titulos);
+		JScrollPane scroll = new JScrollPane(tablas);
+		scroll.setSize(850, 350);
+		scroll.setLocation(60, 275);
+		tabla.add(scroll);
+		
+		
+		
+		return tabla;
+	}
+		
+	
 	
 	
 
