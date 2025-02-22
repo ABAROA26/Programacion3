@@ -417,6 +417,7 @@ public class Ventana extends JFrame{
 				  {"098", "Norma", "Aranda", "1988", "Casada"},
 				  {"099", "Ismael", "Andrade", "1981", "Casado"},
 				  {"100", "Rebeca", "Trujillo", "1995", "Soltera"}
+				  //name
 				  
 				
 				
