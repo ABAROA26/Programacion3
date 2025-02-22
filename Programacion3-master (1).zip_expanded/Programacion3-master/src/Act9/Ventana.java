@@ -416,6 +416,9 @@ public class Ventana extends JFrame{
 				  {"097", "Leonardo", "Orozco", "1983", "Divorciado"},
 				  {"098", "Norma", "Aranda", "1988", "Casada"},
 				  {"099", "Ismael", "Andrade", "1981", "Casado"},
+				  {"100", "Rebeca", "Trujillo", "1995", "Soltera"},
+				  {"100", "Rebeca", "Trujillo", "1995", "Soltera"},
+				  {"100", "Rebeca", "Trujillo", "1995", "Soltera"},
 				  {"100", "Rebeca", "Trujillo", "1995", "Soltera"}
 				
 				
@@ -426,6 +429,8 @@ public class Ventana extends JFrame{
 		scroll.setSize(850, 350);
 		scroll.setLocation(60, 275);
 		tabla.add(scroll);
+		
+		//diegl
 		
 		
 		
