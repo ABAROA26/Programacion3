@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -36,9 +37,9 @@ public class Ventana extends JFrame{
 		
 		this.setResizable(true);
 		
-		//this.add(this.login());
+		this.add(this.login());
 		//this.add(this.registro());
-		this.add(this.tabla());
+		//this.add(this.tabla());
 		this.repaint(); 
 		
 		
@@ -48,70 +49,82 @@ public class Ventana extends JFrame{
 	public JPanel login() {
 		JPanel panel = new JPanel();
 		
-		panel.setBackground(Color.gray);
+		ImageIcon fondologin = new ImageIcon("contraseña.jpg");
+		JLabel fondo = new JLabel(fondologin);
+		fondo.setBounds(1000, 700, 450, 300);
+		panel.add(fondo);
+		
+		panel.setBackground(Color.PINK);
 		panel.setOpaque(true);
-		panel.setSize(500, 500);
+		panel.setSize(1000, 700);
 		panel.setLocation(0, 0);
 		panel.setLayout(null); //Poder colocar las cosas donde nosotros queramos
 		
 		
-		JLabel titulo = new JLabel("Bienvenido");
-		titulo.setSize(100, 30);
+		JLabel titulo = new JLabel("Bienvenidos");
+		titulo.setSize(400, 80);
 		//titulo.setOpaque(true);
 		//titulo.setBackground(Color.WHITE);
-		titulo.setLocation(200, 30);
+		titulo.setLocation(290, 30);
 		titulo.setHorizontalAlignment(JLabel.CENTER);
-		titulo.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 2));
+		titulo.setFont(new Font("Broadway",Font.BOLD,50));
 		panel.add(titulo);
+		
 		
 		JLabel correo = new JLabel("Ingrese su correo");
 		correo.setSize(200, 30);
-		correo.setLocation(40, 130);
-		correo.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		correo.setLocation(390, 200);
+		correo.setFont(new Font("Broadway",Font.BOLD,20));
+		correo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 2));
 		panel.add(correo);
 
 		JTextField escribeCorreo = new JTextField();
 		escribeCorreo.setSize(350, 30);
-		escribeCorreo.setLocation(40, 160);
-		escribeCorreo.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		escribeCorreo.setLocation(315, 240);
+		escribeCorreo.setFont(new Font("Broadway",Font.BOLD,15));
 		panel.add(escribeCorreo);
 		
 		JLabel contraseña = new JLabel("Ingrese su contraseña");
-		contraseña.setSize(200, 30);
-		contraseña.setLocation(40, 220);
-		contraseña.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		contraseña.setSize(255, 30);
+		contraseña.setLocation(360, 320);
+		contraseña.setFont(new Font("Broadway",Font.BOLD,20));
+		contraseña.setBorder(BorderFactory.createLineBorder(Color.CYAN, 2));
 		panel.add(contraseña);
 		
 		JPasswordField ecribeContraseña =  new JPasswordField();
 		ecribeContraseña.setSize(350, 30);
-		ecribeContraseña.setLocation(40, 250);
-		ecribeContraseña.setFont(new Font("Baskerville Old Face",Font.BOLD,20));
+		ecribeContraseña.setLocation(315, 360);
+		ecribeContraseña.setFont(new Font("Broadway",Font.BOLD,20));
 		panel.add(ecribeContraseña);
 		
 		JLabel olvido = new JLabel("¿Olvido su contraseña?");
-		olvido.setSize(200, 30);
-		olvido.setLocation(200, 280);
+		olvido.setSize(250, 30);
+		olvido.setLocation(420, 390);
 		olvido.setHorizontalAlignment(JLabel.RIGHT);
-		olvido.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
+		olvido.setFont(new Font("Broadway",Font.BOLD,13));
 		panel.add(olvido);
 		
 		//olvido.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 		
-		JLabel recordar = new JLabel("Recordarme");
+		JCheckBox recordar = new JCheckBox("Recordarme");
 		recordar.setSize(200, 30);
-		recordar.setLocation(50, 280);
+		recordar.setLocation(310, 390);
+		recordar.setOpaque(false);
 		recordar.setHorizontalAlignment(JLabel.LEFT);
-		recordar.setFont(new Font("Baskerville Old Face",Font.BOLD,13));
+		recordar.setFont(new Font("Broadway",Font.BOLD,13));
 		panel.add(recordar);
 		
 		JButton acceder = new JButton();
 		acceder.setText("Acceder");
-		acceder.setBounds(100, 350, 200, 50);
+		acceder.setOpaque(true);
+		acceder.setBackground(Color.CYAN);
+		acceder.setBounds(390, 500, 200, 50);
+		acceder.setFont(new Font("Broadway",Font.BOLD,30));
+
 		panel.add(acceder);
 		
-		JButton confirmar = new JButton();
-		confirmar.setBounds(35, 288, 10, 10);
-		panel.add(confirmar);
+		
 		
 		return panel;
 		
