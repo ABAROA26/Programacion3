@@ -3,6 +3,7 @@ package Act9;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -49,9 +50,16 @@ public class Ventana extends JFrame{
 	public JPanel login() {
 		JPanel panel = new JPanel();
 		
-		ImageIcon fondologin = new ImageIcon("contraseña.jpg");
-		JLabel fondo = new JLabel(fondologin);
-		fondo.setBounds(1000, 700, 450, 300);
+
+		ImageIcon fondologin = new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\fondologin.jpg");
+		Image img=fondologin.getImage();
+		Image imgScaled=img.getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+		ImageIcon imgIcon = new 	ImageIcon(imgScaled);
+		
+		JLabel fondo = new JLabel();
+		fondo.setIcon(imgIcon);
+		fondo.setBounds(100, 100, 100, 100);
+		fondo.setOpaque(false);
 		panel.add(fondo);
 		
 		panel.setBackground(Color.PINK);
