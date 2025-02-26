@@ -51,17 +51,50 @@ public class Ventana extends JFrame{
 		JPanel panel = new JPanel();
 		
 
-		ImageIcon fondologin = new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\fondologin.jpg");
-		Image img=fondologin.getImage();
+		ImageIcon user = new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\user.png");
+		Image img=user.getImage();
 		Image imgScaled=img.getScaledInstance(25, 30, Image.SCALE_SMOOTH);
 		ImageIcon imgIcon = new 	ImageIcon(imgScaled);
 		
 		JLabel fondo = new JLabel();
 		fondo.setIcon(imgIcon);
-		fondo.setBounds(100, 100, 100, 100);
+		fondo.setBounds(290, 155, 200, 200);
 		fondo.setOpaque(false);
 		panel.add(fondo);
 		
+		ImageIcon contra = new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\contra2.png");
+		Image imgContra=contra.getImage();
+		Image imgScaledContra=imgContra.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		ImageIcon imgIconContra = new 	ImageIcon(imgScaledContra);
+		
+		JLabel contra1 = new JLabel();
+		contra1.setIcon(imgIconContra);
+		contra1.setBounds(290, 275, 200, 200);
+		contra1.setOpaque(false);
+		panel.add(contra1);
+		
+		ImageIcon flecha = new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\flecha.png");
+		Image imgflecha=flecha.getImage();
+		Image scaledFlecha=imgflecha.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+		ImageIcon imgIconFlecha = new 	ImageIcon(scaledFlecha);
+		
+		JLabel flecha1 = new JLabel();
+		flecha1.setIcon(imgIconFlecha);
+		flecha1.setBounds(570, 425, 200, 200);
+		flecha1.setOpaque(false);
+		panel.add(flecha1);
+		
+		/*ImageIcon fondo1 = new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\fondologin.jpg");
+		Image imgfondo1=fondo1.getImage();
+		Image saledFondo=imgfondo1.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+		ImageIcon iconFondo = new 	ImageIcon(saledFondo);
+		
+		JLabel fondo2 = new JLabel();
+		fondo2.setIcon(iconFondo);
+		fondo2.setBounds(0, 0, 100, 100);
+		fondo2.setOpaque(false);
+		panel.add(fondo2);*/
+	
 		panel.setBackground(Color.PINK);
 		panel.setOpaque(true);
 		panel.setSize(1000, 700);
