@@ -4,18 +4,25 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.MenuItem;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -26,7 +33,7 @@ public class Ventana extends JFrame{
 	public Ventana() {
 	
 		this.setVisible(true);
-		this.setSize(1000, 700);
+		this.setSize(500, 700);
 		this.setLocationRelativeTo(null);
 		
 		this.setTitle("Login");
@@ -38,10 +45,84 @@ public class Ventana extends JFrame{
 		
 		this.setResizable(true);
 		
-		this.add(this.login());
+		//this.add(this.login());
+		this.add(this.registro());
+		//this.add(this.tabla());
+		
+		JMenuBar menu = new JMenuBar();
+		
+		JMenu file = new JMenu("Archivo");
+		menu.add(file);
+		
+		JMenuItem abrir = new JMenuItem("Abrir");
+		file.add(abrir);
+		
+		JMenuItem cerrar = new JMenuItem("Cerrar");
+		file.add(cerrar);
+		
+		JMenuItem guardar = new JMenuItem("Guardar");
+		file.add(guardar);
+		
+		JMenu guardar2 = new JMenu("Guardar como");
+		file.add(guardar2);
+		
+		JRadioButtonMenuItem pdf = new JRadioButtonMenuItem("Archivo PDF");
+		guardar2.add(pdf);
+		
+		JRadioButtonMenuItem word = new JRadioButtonMenuItem("Archivo Word");
+		guardar2.add(word);
+		
+		JRadioButtonMenuItem xlsx = new JRadioButtonMenuItem("Archivo XLSX");
+		guardar2.add(xlsx);
+		
+		JRadioButtonMenuItem texto = new JRadioButtonMenuItem("Archivo de Texto");
+		guardar2.add(texto);
+		
+		
+		
+		JMenu menu2 = new JMenu("Ayuda");
+		menu.add(menu2);
+		
+		/*JMenuItem img = new JMenuItem(new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\ayuda2.png"));
+		menu2.add(img);*/
+		
+		JMenuItem img = new JMenuItem("Both text and icon",
+                new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\ayuda2.png"));
+		img.setMnemonic(KeyEvent.VK_B);
+		menu2.add(img);
+
+		JMenuItem ayuda1 = new JMenuItem("Manual de Uusario");
+		menu2.add(ayuda1);
+		
+		JMenuItem ayuda2 = new JMenuItem("Reportar Problema");
+		menu2.add(ayuda2);
+		
+		JMenuItem ayuda3 = new JMenuItem("Tips de usuario");
+		menu2.add(ayuda3);
+		
+		JMenu menu_configuracion = new JMenu("Configuracion");
+		menu.add(menu_configuracion);
+		 
+		JCheckBoxMenuItem op_1 = new JCheckBoxMenuItem("Problema 1");
+		menu_configuracion.add(op_1);
+		
+		JCheckBoxMenuItem op_2 = new JCheckBoxMenuItem("Problema 4");
+		menu_configuracion.add(op_2);
+		
+		JCheckBoxMenuItem op_3 = new JCheckBoxMenuItem("Problema 3");
+		menu_configuracion.add(op_3);
+		
+		JRadioButtonMenuItem op_4 = new JRadioButtonMenuItem("Problemas al guardar archivo");
+		menu_configuracion.add(op_4);
+		
+		
+		
+		this.setJMenuBar(menu);
+		
 		//this.add(this.registro());
 		//this.add(this.tabla());
 		this.repaint(); 
+		this.revalidate();
 		
 		
 		
@@ -64,7 +145,7 @@ public class Ventana extends JFrame{
 		
 		ImageIcon contra = new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\contra2.png");
 		Image imgContra=contra.getImage();
-		Image imgScaledContra=imgContra.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		Image imgScaledContra=imgContra.getScaledInstance(25, 30, Image.SCALE_SMOOTH);
 		ImageIcon imgIconContra = new 	ImageIcon(imgScaledContra);
 		
 		JLabel contra1 = new JLabel();
