@@ -35,6 +35,7 @@ public class Ventana_Calcu extends JFrame {
 		ImageIcon imgIcon = new 	ImageIcon(imgScaled);
 		
 		this.setIconImage(img);
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.setMaximumSize(new Dimension(800,800));
@@ -42,8 +43,8 @@ public class Ventana_Calcu extends JFrame {
 		
 		this.setResizable(true);
 		
-		this.add(calcu());
-		//this.add(calcuLayout());
+		//this.add(calcu());
+		this.add(calcuLayout());
 		
 		this.repaint(); 
 		this.revalidate();
@@ -280,12 +281,12 @@ public class Ventana_Calcu extends JFrame {
 		
 		JPanel panel = new JPanel();
 		
-		panel.setBackground(Color.gray);
+		panel.setBackground(Color.black);
 		panel.setOpaque(true);
 		panel.setLayout(new BorderLayout()); //Poder colocar las cosas donde nosotros queramos
 		
 		JLabel resultado = new JLabel("30.00");
-		resultado.setBackground(Color.WHITE);		
+		resultado.setBackground(Color.black);		
 		resultado.setOpaque(true);
 		resultado.setFont(fuente);
 		resultado.setHorizontalAlignment(JLabel.RIGHT);
@@ -298,22 +299,43 @@ public class Ventana_Calcu extends JFrame {
 		panel.add(centro,BorderLayout.CENTER);
 		
 		JPanel numeros = new JPanel();
-		numeros.setLayout(new GridLayout(4,3));
+		numeros.setBackground(Color.black);
+		numeros.setLayout(new GridLayout(4,3,2,2));
 		centro.add(numeros,BorderLayout.CENTER);
 		
-		String [] numeros1 = {"1","2","3","4","5","6","7","8","9","0","."};
+		String [] numeros1 = {"7","8","9","4","5","6","1","2","3","0","."};
 		
 		for (String poner_numeros : numeros1) {
 			
 			JButton numeros3 = new JButton(poner_numeros);
+			numeros3.setForeground(Color.BLACK);
+			numeros3.setBackground(Color.cyan);
+			numeros3.setFont(fuente);
 			
+			numeros.add(numeros3);			
 			
+		}
+		
+		JPanel reja = new JPanel();
+		reja.setBackground(Color.black);
+		reja.setLayout(new GridLayout(6,1,2,2));
+		centro.add(reja,BorderLayout.LINE_END);
+		
+		String [] letras = {"+","-","/","*","=","CE"};
+		
+		for (String poner_numeros : letras) {
+			
+			JButton numeros3 = new JButton(poner_numeros);
+			numeros3.setForeground(Color.black);
+			numeros3.setBackground(Color.orange);
+			numeros3.setFont(fuente);
+			reja.add(numeros3);			
 			
 		}
 		
 		
 		
-		return null;
+		return panel;
 	}
 
 }

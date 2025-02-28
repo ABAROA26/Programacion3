@@ -168,7 +168,7 @@ public class Ventana extends JFrame{
 		/*ImageIcon fondo1 = new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\fondologin.jpg");
 		Image imgfondo1=fondo1.getImage();
 		Image saledFondo=imgfondo1.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-		ImageIcon iconFondo = new 	ImageIcon(saledFondo);
+		ImageIcon iconFondo = new 	ImageIcon(saledFondo)
 		
 		JLabel fondo2 = new JLabel();
 		fondo2.setIcon(iconFondo);
