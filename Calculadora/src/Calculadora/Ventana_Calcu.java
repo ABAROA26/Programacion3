@@ -1,13 +1,16 @@
 package Calculadora;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,19 +21,29 @@ public class Ventana_Calcu extends JFrame {
 	public Ventana_Calcu() {
 		
 		this.setVisible(true);
-		this.setSize(442, 620);
+		this.setSize(400, 500);
+		//442,620 Medidas calculadora A mano
 		this.setLocationRelativeTo(null);
+		
+		
 		
 		this.setTitle("Calculadora");
 		
+		ImageIcon user = new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Calculadora\\src\\Calculadora\\icono.png");
+		Image img=user.getImage();
+		Image imgScaled=img.getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+		ImageIcon imgIcon = new 	ImageIcon(imgScaled);
+		
+		this.setIconImage(img);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.setMaximumSize(new Dimension(800,800));
 		this.setMinimumSize(new Dimension(300,300));
 		
-		this.setResizable(false);
+		this.setResizable(true);
 		
 		this.add(calcu());
+		//this.add(calcuLayout());
 		
 		this.repaint(); 
 		this.revalidate();
@@ -259,6 +272,48 @@ public class Ventana_Calcu extends JFrame {
 
 		
 		return panel;
+	} 
+	
+	public JPanel calcuLayout() {
+		
+		Font fuente = new Font("Dubai medium",Font.BOLD,50);
+		
+		JPanel panel = new JPanel();
+		
+		panel.setBackground(Color.gray);
+		panel.setOpaque(true);
+		panel.setLayout(new BorderLayout()); //Poder colocar las cosas donde nosotros queramos
+		
+		JLabel resultado = new JLabel("30.00");
+		resultado.setBackground(Color.WHITE);		
+		resultado.setOpaque(true);
+		resultado.setFont(fuente);
+		resultado.setHorizontalAlignment(JLabel.RIGHT);
+		panel.add(resultado,BorderLayout.NORTH);
+		
+		JPanel centro = new JPanel();
+		resultado.setBackground(Color.gray);
+		resultado.setOpaque(true);
+		centro.setLayout(new BorderLayout());
+		panel.add(centro,BorderLayout.CENTER);
+		
+		JPanel numeros = new JPanel();
+		numeros.setLayout(new GridLayout(4,3));
+		centro.add(numeros,BorderLayout.CENTER);
+		
+		String [] numeros1 = {"1","2","3","4","5","6","7","8","9","0","."};
+		
+		for (String poner_numeros : numeros1) {
+			
+			JButton numeros3 = new JButton(poner_numeros);
+			
+			
+			
+		}
+		
+		
+		
+		return null;
 	}
 
 }
