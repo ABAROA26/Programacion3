@@ -266,7 +266,8 @@ public class Interfaz2 {
 		});
 		panel_5_2.add(btnNewButton);
 		
-		JButton btnNewButton_2 = new JButton("Salir");
+		JButton btnNewButton_2 = new JButton("Cerrar");
+		btnNewButton_2.setIcon(null);
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
 		btnNewButton_2.setBackground(new Color(0, 0, 0));
