@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.MenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
@@ -33,7 +35,7 @@ public class Ventana extends JFrame{
 	public Ventana() {
 	
 		this.setVisible(true);
-		this.setSize(500, 700);
+		this.setSize(1000, 700);
 		this.setLocationRelativeTo(null);
 		
 		this.setTitle("Login");
@@ -49,7 +51,7 @@ public class Ventana extends JFrame{
 		this.add(this.registro());
 		//this.add(this.tabla());
 		
-		JMenuBar menu = new JMenuBar();
+		/*JMenuBar menu = new JMenuBar();
 		
 		JMenu file = new JMenu("Archivo");
 		menu.add(file);
@@ -86,7 +88,7 @@ public class Ventana extends JFrame{
 		/*JMenuItem img = new JMenuItem(new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\ayuda2.png"));
 		menu2.add(img);*/
 		
-		JMenuItem img = new JMenuItem("Both text and icon",
+		/*JMenuItem img = new JMenuItem("Both text and icon",
                 new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\ayuda2.png"));
 		img.setMnemonic(KeyEvent.VK_B);
 		menu2.add(img);
@@ -114,11 +116,12 @@ public class Ventana extends JFrame{
 		
 		JRadioButtonMenuItem op_4 = new JRadioButtonMenuItem("Problemas al guardar archivo");
 		menu_configuracion.add(op_4);
+		*/
 		
 		
 		
-		this.setJMenuBar(menu);
-		
+		//this.setJMenuBar(menu);
+		//this.add(this.login());
 		//this.add(this.registro());
 		//this.add(this.tabla());
 		this.repaint(); 
@@ -243,6 +246,28 @@ public class Ventana extends JFrame{
 		acceder.setBackground(Color.CYAN);
 		acceder.setBounds(390, 500, 200, 50);
 		acceder.setFont(new Font("Broadway",Font.BOLD,30));
+		
+		acceder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(escribeCorreo.getText().equals("")) {
+					escribeCorreo.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+				}else {
+					escribeCorreo.setBorder(BorderFactory.createLineBorder(Color.green,3));
+
+				}
+				String pass = new String(ecribeContraseña.getPassword());
+				if(pass.equals("")) {
+					ecribeContraseña.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+
+				}else {
+					ecribeContraseña.setBorder(BorderFactory.createLineBorder(Color.green,3));
+
+				}
+				
+			}});
 
 		panel.add(acceder);
 		
@@ -383,6 +408,32 @@ public class Ventana extends JFrame{
 		acceder.setOpaque(true);
 		acceder.setBackground(Color.CYAN);
 		acceder.setFont(new Font("Baskerville Old Face",Font.BOLD,25));
+		
+		acceder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(escribeNombre.getText().equals("")) {
+					escribeNombre.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+				}else {
+					escribeNombre.setBorder(BorderFactory.createLineBorder(Color.green,3));
+
+				}
+				if(descripcion.getText().equals("")) {
+					descripcion.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+
+				}else {
+					descripcion.setBorder(BorderFactory.createLineBorder(Color.green,3));
+
+				}
+				
+				
+				
+				
+				
+			}});
+		
 		regis.add(acceder);
 		
 		
