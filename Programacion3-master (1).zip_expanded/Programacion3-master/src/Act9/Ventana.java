@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -47,8 +48,8 @@ public class Ventana extends JFrame{
 		
 		this.setResizable(true);
 		
-		//this.add(this.login());
-		this.add(this.registro());
+		this.add(this.login());
+		//this.add(this.registro());
 		//this.add(this.tabla());
 		
 		/*JMenuBar menu = new JMenuBar();
@@ -252,11 +253,13 @@ public class Ventana extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				Boolean flag1 = false, flag2 = false;
+				
 				if(escribeCorreo.getText().equals("")) {
 					escribeCorreo.setBorder(BorderFactory.createLineBorder(Color.RED,3));
 				}else {
 					escribeCorreo.setBorder(BorderFactory.createLineBorder(Color.green,3));
-
+					flag1 = true;
 				}
 				String pass = new String(ecribeContraseña.getPassword());
 				if(pass.equals("")) {
@@ -264,7 +267,17 @@ public class Ventana extends JFrame{
 
 				}else {
 					ecribeContraseña.setBorder(BorderFactory.createLineBorder(Color.green,3));
+					flag2=true;
+				}
+				
+				if(flag1 && flag2) {
+					if(escribeCorreo.getText().equals("diegoemiln_23"));
+					if(pass.equals("123456")) {
+						JOptionPane.showMessageDialog(null, "Bienvenido al sistema" , "Hello", JOptionPane.WARNING_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "Error en el acceso" , "Hello", JOptionPane.ERROR_MESSAGE);
 
+				}
 				}
 				
 			}});
@@ -427,7 +440,7 @@ public class Ventana extends JFrame{
 					descripcion.setBorder(BorderFactory.createLineBorder(Color.green,3));
 
 				}
-				
+								
 				
 				
 				
