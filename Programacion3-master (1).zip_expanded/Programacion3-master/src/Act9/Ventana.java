@@ -118,7 +118,33 @@ public class Ventana extends JFrame{
 		JRadioButtonMenuItem op_4 = new JRadioButtonMenuItem("Problemas al guardar archivo");
 		menu_configuracion.add(op_4);
 		
+		JMenu menu3 = new JMenu("Cuenta");
 		
+			JMenuItem op_5 = new JMenuItem("Registro");
+			op_5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("registro");
+				}
+			
+			});
+		menu3.add(op_5);
+		
+		JMenuItem op_6 = new JMenuItem("Login");
+		op_6.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("login");
+			}
+			
+			});
+		menu3.add(op_6);
+		
+		menu.add(menu3);
 		
 		
 		
