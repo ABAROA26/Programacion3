@@ -36,7 +36,7 @@ public class Ventana extends JFrame{
 	public Ventana() {
 	
 		this.setVisible(true);
-		this.setSize(1000, 700);
+		this.setSize(1000, 1000);
 		this.setLocationRelativeTo(null);
 		
 		this.setTitle("Login");
@@ -48,11 +48,11 @@ public class Ventana extends JFrame{
 		
 		this.setResizable(true);
 		
-		this.add(this.login());
+		//this.add(this.login());
 		//this.add(this.registro());
 		//this.add(this.tabla());
 		
-		/*JMenuBar menu = new JMenuBar();
+		JMenuBar menu = new JMenuBar();
 		
 		JMenu file = new JMenu("Archivo");
 		menu.add(file);
@@ -86,13 +86,13 @@ public class Ventana extends JFrame{
 		JMenu menu2 = new JMenu("Ayuda");
 		menu.add(menu2);
 		
-		/*JMenuItem img = new JMenuItem(new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\ayuda2.png"));
-		menu2.add(img);*/
+	//	JMenuItem img = new JMenuItem(new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\ayuda2.png"));
+		//menu2.add(img);
 		
-		/*JMenuItem img = new JMenuItem("Both text and icon",
-                new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\ayuda2.png"));
-		img.setMnemonic(KeyEvent.VK_B);
-		menu2.add(img);
+		//JMenuItem img2 = new JMenuItem("Both text and icon",
+          //      new ImageIcon("C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\ayuda2.png"));
+		//img2.setMnemonic(KeyEvent.VK_B);
+		//menu2.add(img2);
 
 		JMenuItem ayuda1 = new JMenuItem("Manual de Uusario");
 		menu2.add(ayuda1);
@@ -117,12 +117,14 @@ public class Ventana extends JFrame{
 		
 		JRadioButtonMenuItem op_4 = new JRadioButtonMenuItem("Problemas al guardar archivo");
 		menu_configuracion.add(op_4);
-		*/
 		
 		
 		
-		//this.setJMenuBar(menu);
-		//this.add(this.login());
+		
+		
+		
+		this.setJMenuBar(menu);
+		this.add(this.login());
 		//this.add(this.registro());
 		//this.add(this.tabla());
 		this.repaint(); 
@@ -272,8 +274,8 @@ public class Ventana extends JFrame{
 				
 				if(flag1 && flag2) {
 					if(escribeCorreo.getText().equals("diegoemiln_23"));
-					if(pass.equals("123456")) {
-						JOptionPane.showMessageDialog(null, "Bienvenido al sistema" , "Hello", JOptionPane.WARNING_MESSAGE);
+						if(pass.equals("123456")) {
+							JOptionPane.showMessageDialog(null, "Bienvenido al sistema" , "Hello", JOptionPane.WARNING_MESSAGE);
 					}else {
 						JOptionPane.showMessageDialog(null, "Error en el acceso" , "Hello", JOptionPane.ERROR_MESSAGE);
 
@@ -283,6 +285,27 @@ public class Ventana extends JFrame{
 			}});
 
 		panel.add(acceder);
+		
+		JButton ir_registro = new JButton();
+		ir_registro.setText("Ir al registro");
+		ir_registro.setOpaque(true);
+		ir_registro.setBackground(Color.CYAN);
+		ir_registro.setBounds(390, 600, 200, 50);
+		ir_registro.setFont(new Font("Broadway",Font.BOLD,20));
+		ir_registro.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("registro");
+			}
+			
+			
+		});
+		
+		
+		
+		panel.add(ir_registro);
 		
 		
 		
@@ -449,12 +472,47 @@ public class Ventana extends JFrame{
 		
 		regis.add(acceder);
 		
+		JButton ir_login = new JButton();
+		ir_login.setText("Ir al login");
+		ir_login.setLocation(150,650);
+		ir_login.setSize(200, 50);
+		ir_login.setOpaque(true);
+		ir_login.setBackground(Color.CYAN);
+		ir_login.setFont(new Font("Baskerville Old Face",Font.BOLD,25));
+		
+		ir_login.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("login");
+			}
+			
+		});
+		
+		regis.add(ir_login);
+		
 		
 		
  
 		return regis;
 	}
 
+	public void router(String route) {
+		this.getContentPane().removeAll();
+		
+		if(route.equals("registro")) {
+			this.add(this.registro());
+		}
+		if(route.equals("login")) {
+			this.add(this.login());
+		}
+		
+		this.repaint();
+		this.revalidate();
+	}
+	
+	
 	public JPanel tabla() {
 		JPanel tabla = new JPanel();
 		
@@ -633,9 +691,5 @@ public class Ventana extends JFrame{
 		return tabla;
 	}
 		
-	
-	
-	
-
 	
 }
