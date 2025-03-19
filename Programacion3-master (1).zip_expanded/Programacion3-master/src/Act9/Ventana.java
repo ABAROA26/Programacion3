@@ -236,6 +236,7 @@ public class Ventana extends JFrame {
 		this.add(this.login());
 		// this.add(this.registro());
 		// this.add(this.tabla());
+		//this.add(this.alta_usuarios());
 		this.repaint();
 		this.revalidate();
 
@@ -247,12 +248,12 @@ public class Ventana extends JFrame {
 		ImageIcon user = new ImageIcon(
 				"C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\user.png");
 		Image img = user.getImage();
-		Image imgScaled = img.getScaledInstance(25, 30, Image.SCALE_SMOOTH);
+		Image imgScaled = img.getScaledInstance(25, 35, Image.SCALE_SMOOTH);
 		ImageIcon imgIcon = new ImageIcon(imgScaled);
 
 		JLabel fondo = new JLabel();
 		fondo.setIcon(imgIcon);
-		fondo.setBounds(290, 155, 200, 200);
+		fondo.setBounds(290, 155, 200, 200);        
 		fondo.setOpaque(false);
 		panel.add(fondo);
 
@@ -293,8 +294,10 @@ public class Ventana extends JFrame {
 
 		panel.setBackground(Color.PINK);
 		panel.setOpaque(true);
-		panel.setSize(1000, 700);
+		panel.setSize(1000, 1000);
 		panel.setLocation(0, 0);
+		panel.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
+
 		panel.setLayout(null); // Poder colocar las cosas donde nosotros queramos
 
 		JLabel titulo = new JLabel("Bienvenidos");
@@ -423,8 +426,10 @@ public class Ventana extends JFrame {
 
 		regis.setBackground(Color.PINK);
 		regis.setOpaque(true);
-		regis.setSize(500, 700);
+		regis.setSize(1000, 1000);
 		regis.setLocation(0, 0);
+        regis.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
+
 		regis.setLayout(null); // Poder colocar las cosas donde nosotros queramos
 
 		JLabel titulo = new JLabel("Registrarse");
@@ -597,135 +602,468 @@ public class Ventana extends JFrame {
 	}
 
 	public JPanel recupera() {
-		JPanel recupera = new JPanel();
+		 
+	        JPanel recupera = new JPanel();
+	        recupera.setBackground(Color.PINK);
+	        recupera.setLayout(null);
+	        recupera.setPreferredSize(new Dimension(1000, 1000));
+	        recupera.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
 
-		recupera.setBackground(Color.red);
-		recupera.setOpaque(true);
-		recupera.setSize(500, 700);
-		recupera.setLocation(0, 0);
-		recupera.setLayout(null); // Poder colocar las cosas donde nosotros queramos
+	        JLabel titulo = new JLabel("Recuperar Cuenta");
+	        titulo.setSize(350, 100);
+	        titulo.setOpaque(false);
+	        titulo.setBackground(Color.CYAN);
+	        titulo.setLocation(325, 50);
+	        titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 5));
 
-		JLabel titulo = new JLabel("Rcuperar Cuenta");
-		titulo.setSize(350, 100);
-		titulo.setOpaque(true);
-		titulo.setBackground(Color.CYAN);
-		titulo.setLocation(250, 250);
-		titulo.setHorizontalAlignment(JLabel.CENTER);
-		titulo.setFont(new Font("Baskerville Old Face", Font.BOLD, 30));
-		recupera.add(titulo);
+	        titulo.setHorizontalAlignment(JLabel.CENTER);
+	        titulo.setFont(new Font("Baskerville Old Face", Font.BOLD, 40));
+	        recupera.add(titulo);
 
-		return recupera;
+	        JLabel ingresaCorreo = new JLabel("Ingrese su correo:");
+	        ingresaCorreo.setSize(250, 40);
+	        ingresaCorreo.setFont(new Font("Baskerville Old Face", Font.BOLD, 25));
+	        ingresaCorreo.setLocation(400, 300);
+	        recupera.add(ingresaCorreo);
 
-	}
+	        JTextField email = new JTextField();
+	        email.setSize(400, 40);
+	        email.setLocation(300, 350);
+	        email.setFont(new Font("Baskerville Old Face", Font.BOLD, 25));
 
+	        recupera.add(email);
+
+	        JButton boton = new JButton("Restablecer Contraseña");
+	        boton.setSize(300, 50);
+	        boton.setLocation(350, 450);
+	        boton.setBackground(Color.CYAN);
+	        boton.setFont(new Font("Baskerville Old Face", Font.BOLD, 25));
+	        recupera.add(boton);
+
+	        boton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                String email1 = email.getText();
+	                if (email1.isEmpty()) {
+	                    JOptionPane.showMessageDialog(null, "Por favor, ingrese su correo.", "Error", JOptionPane.ERROR_MESSAGE);
+	                } 
+	            }
+	        });
+	        
+	        return recupera;
+	    }
+		
 	public JPanel alta_usuarios() {
-		JPanel alta = new JPanel();
+		
+		JPanel regis = new JPanel();
 
-		alta.setBackground(Color.red);
-		alta.setOpaque(true);
-		alta.setSize(500, 700);
-		alta.setLocation(0, 0);
-		alta.setLayout(null); // Poder colocar las cosas donde nosotros queramos
+		regis.setBackground(Color.PINK);
+		regis.setOpaque(true);
+		regis.setSize(1000, 1000);
+		regis.setLocation(0, 0);
+        regis.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
 
-		JLabel titulo = new JLabel("Alta de usuarios");
-		titulo.setSize(350, 100);
+		regis.setLayout(null); // Poder colocar las cosas donde nosotros queramos
+
+		JLabel titulo = new JLabel("Registrarse");
+		titulo.setSize(200, 50);
 		titulo.setOpaque(true);
 		titulo.setBackground(Color.CYAN);
-		titulo.setLocation(250, 250);
+		titulo.setLocation(400, 30);
 		titulo.setHorizontalAlignment(JLabel.CENTER);
 		titulo.setFont(new Font("Baskerville Old Face", Font.BOLD, 30));
-		alta.add(titulo);
+		regis.add(titulo);
 
-		return alta;
+		JLabel correo = new JLabel("Ingrese su nombre completo");
+		correo.setSize(250, 30);
+		correo.setLocation(375, 100);
+		correo.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		correo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
+		regis.add(correo);
+
+		JTextField escribeNombre = new JTextField();
+		escribeNombre.setSize(350, 30);
+		escribeNombre.setLocation(325, 135);
+		escribeNombre.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		regis.add(escribeNombre);
+
+		JLabel contraseña = new JLabel("Descripcion Personal");
+		contraseña.setSize(200, 30);
+		contraseña.setLocation(400, 190);
+		contraseña.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		contraseña.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
+		regis.add(contraseña);
+
+		JTextArea descripcion = new JTextArea();
+		descripcion.setSize(350, 100);
+		descripcion.setLocation(325, 230);
+		descripcion.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		regis.add(descripcion);
+
+		JLabel preferencias = new JLabel("Preferencias");
+		preferencias.setSize(115, 30);
+		preferencias.setLocation(430, 340);
+		preferencias.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		preferencias.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
+		regis.add(preferencias);
+
+		JCheckBox prefe = new JCheckBox("Frio", false);
+		prefe.setSize(60, 30);
+		prefe.setLocation(340, 375);
+		prefe.setOpaque(false);
+		prefe.setFont(new Font("Baskerville Old Face", Font.BOLD, 15));
+		regis.add(prefe);
+
+		JCheckBox prefe1 = new JCheckBox("Calor", false);
+		prefe1.setSize(70, 30);
+		prefe1.setLocation(450, 375);
+		prefe1.setOpaque(false);
+
+		prefe1.setFont(new Font("Baskerville Old Face", Font.BOLD, 15));
+		// prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		regis.add(prefe1);
+
+		JCheckBox prefe2 = new JCheckBox("Neutro", false);
+		prefe2.setSize(80, 30);
+		prefe2.setLocation(580, 375);
+		prefe2.setOpaque(false);
+
+		prefe2.setFont(new Font("Baskerville Old Face", Font.BOLD, 15));
+		// prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+		regis.add(prefe2);
+
+		JLabel colonia = new JLabel("Elige la colonia donde vives");
+		colonia.setSize(250, 30);
+		colonia.setLocation(375, 420);
+		colonia.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		colonia.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
+		regis.add(colonia);
+
+		String dataset[] = { " ", "Camino Real", "Centro", "Chametla", "Centenario", "Progreso" };
+
+		JComboBox colonias = new JComboBox(dataset);
+		colonias.setSize(120, 30);
+		colonias.setLocation(430, 460);
+		colonias.setFont(new Font("Baskerville Old Face", Font.BOLD, 15));
+		regis.add(colonias);
+
+		JLabel terms = new JLabel("Terminos y Condiciones");
+		terms.setSize(225, 30);
+		terms.setLocation(375, 500);
+		terms.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		terms.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
+
+		regis.add(terms);
+
+		JRadioButton acepto = new JRadioButton("Acepto los términos", true);
+		acepto.setSize(140, 20);
+		acepto.setLocation(350, 540);
+		acepto.setOpaque(false);
+
+		acepto.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
+		regis.add(acepto);
+
+		JRadioButton NoAcepto = new JRadioButton("No acepto los términos", false);
+		NoAcepto.setSize(150, 20);
+		NoAcepto.setLocation(500, 540);
+		NoAcepto.setOpaque(false);
+
+		NoAcepto.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
+		regis.add(NoAcepto);
+
+		ButtonGroup opcion = new ButtonGroup();
+		opcion.add(NoAcepto);
+		opcion.add(acepto);
+
+		JButton acceder = new JButton();
+		acceder.setText("Crear Cuenta");
+		acceder.setLocation(390, 590);
+		acceder.setSize(200, 50);
+		acceder.setOpaque(true);
+		acceder.setBackground(Color.CYAN);
+		acceder.setFont(new Font("Baskerville Old Face", Font.BOLD, 25));
+
+		acceder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				if (escribeNombre.getText().equals("")) {
+					escribeNombre.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
+				} else {
+					escribeNombre.setBorder(BorderFactory.createLineBorder(Color.green, 3));
+
+				}
+				if (descripcion.getText().equals("")) {
+					descripcion.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
+
+				} else {
+					descripcion.setBorder(BorderFactory.createLineBorder(Color.green, 3));
+
+				}
+
+			}
+		});
+
+		regis.add(acceder);
+
+		return regis;
 
 	}
 
 	public JPanel baja_usuarios() {
-		JPanel baja = new JPanel();
+		 	
+	        JPanel baja = new JPanel();
+	        baja.setBackground(Color.PINK);
+	        baja.setLayout(null);
+	        baja.setPreferredSize(new Dimension(1000, 1000));
+	        baja.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
 
-		baja.setBackground(Color.red);
-		baja.setOpaque(true);
-		baja.setSize(500, 700);
-		baja.setLocation(0, 0);
-		baja.setLayout(null); // Poder colocar las cosas donde nosotros queramos
+	        //
+	        JLabel titulo = new JLabel("Baja de Usuarios");
+	        titulo.setSize(350, 100);
+	        titulo.setOpaque(false);
+	        titulo.setBackground(Color.CYAN);
+	        titulo.setLocation(325, 50);
+	        titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 5));
+	        titulo.setHorizontalAlignment(JLabel.CENTER);
+	        titulo.setFont(new Font("Baskerville Old Face", Font.BOLD, 40));
+	        baja.add(titulo);
 
-		JLabel titulo = new JLabel("Baja de usuarios");
-		titulo.setSize(350, 100);
-		titulo.setOpaque(true);
-		titulo.setBackground(Color.CYAN);
-		titulo.setLocation(250, 250);
-		titulo.setHorizontalAlignment(JLabel.CENTER);
-		titulo.setFont(new Font("Baskerville Old Face", Font.BOLD, 30));
-		baja.add(titulo);
+	        JLabel ingresa_correo = new JLabel("Ingrese ID o correo del usuario:");
+	        ingresa_correo.setSize(300, 40);
+	        ingresa_correo.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+	        ingresa_correo.setLocation(350, 300);
+	        baja.add(ingresa_correo);
 
-		return baja;
+	        JTextField ingresa = new JTextField();
+	        ingresa.setSize(400, 40);
+	        ingresa.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+	        ingresa.setLocation(300, 350);
+	        baja.add(ingresa);
+
+	        JButton boton = new JButton("Dar de Baja");
+	        boton.setSize(250, 50);
+	        boton.setLocation(375, 450);
+	        boton.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+	        boton.setBackground(Color.cyan);
+	        boton.setForeground(Color.black);
+	        baja.add(boton);
+
+	        boton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                String texto = ingresa.getText();
+	                if (texto.isEmpty()) {
+	                    JOptionPane.showMessageDialog(null, "Por favor, ingrese un ID o correo.", "Error", JOptionPane.ERROR_MESSAGE);
+	                } 
+	            }
+	        });
+	        
+	        return baja;
 
 	}
 
 	public JPanel como_crear_usuarios() {
 		JPanel como_crear = new JPanel();
 
-		como_crear.setBackground(Color.red);
+		como_crear.setBackground(Color.pink);
 		como_crear.setOpaque(true);
-		como_crear.setSize(500, 700);
+		como_crear.setSize(1000, 1000);
+		como_crear.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
 		como_crear.setLocation(0, 0);
-		como_crear.setLayout(null); // Poder colocar las cosas donde nosotros queramos
-
-		JLabel titulo = new JLabel("Como crear usuarios");
-		titulo.setSize(350, 100);
-		titulo.setOpaque(true);
+		como_crear.setLayout(null); 
+		
+		JLabel titulo = new JLabel("¿Cómo crear un usuario?");
+		titulo.setSize(600, 100);
+		titulo.setOpaque(false);
 		titulo.setBackground(Color.CYAN);
-		titulo.setLocation(250, 250);
+		titulo.setLocation(200, 100);
+		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 5));
 		titulo.setHorizontalAlignment(JLabel.CENTER);
 		titulo.setFont(new Font("Baskerville Old Face", Font.BOLD, 30));
 		como_crear.add(titulo);
 
+		JTextArea ayudaCrear = new JTextArea();
+		ayudaCrear.setText("Para crear un usuario, sigue los siguientes pasos:\n\n" +
+		                    "1. Ingresa los datos solicitados en los campos correspondientes.\n" +
+		                    "2. Presiona el botón 'Crear Cuenta'.\n" +
+		                    "3. Si tus datos son correctos, podrás crear tu cuenta sin problema.\n\n" +
+		                    "Ve al boton 'Ir registro' y te mandara directamente.");
+		ayudaCrear.setFont(new Font("Baskerville Old Face", Font.PLAIN, 20));
+		ayudaCrear.setOpaque(false);
+		ayudaCrear.setBounds(150, 250, 700, 300);
+		como_crear.add(ayudaCrear);
+
+		JButton boton = new JButton("Ir al registro");
+		boton.setBounds(200, 600, 200, 50);
+		boton.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		boton.setBackground(Color.CYAN);
+		como_crear.add(boton);
+		
+		boton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("registro");
+			}
+
+		});
+		
+		JButton boton1 = new JButton("Regresar al login");
+		boton1.setBounds(600, 600, 200, 50);
+		boton1.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		boton1.setBackground(Color.CYAN);
+		como_crear.add(boton1);
+		
+		boton1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("login");
+			}
+
+		});
+		
+
+
+
 		return como_crear;
+
 
 	}
 
 	public JPanel acceder_sistema() {
 		JPanel acceder = new JPanel();
 
-		acceder.setBackground(Color.red);
+		acceder.setBackground(Color.pink);
 		acceder.setOpaque(true);
-		acceder.setSize(500, 700);
+		acceder.setSize(1000, 1000);
+		acceder.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
 		acceder.setLocation(0, 0);
-		acceder.setLayout(null); // Poder colocar las cosas donde nosotros queramos
-
-		JLabel titulo = new JLabel("Como acceder al sistema");
-		titulo.setSize(350, 100);
-		titulo.setOpaque(true);
+		acceder.setLayout(null); 
+		
+		JLabel titulo = new JLabel("¿Cómo acceder al sistema?");
+		titulo.setSize(600, 100);
+		titulo.setOpaque(false);
 		titulo.setBackground(Color.CYAN);
-		titulo.setLocation(250, 250);
+		titulo.setLocation(200, 100);
+		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 5));
 		titulo.setHorizontalAlignment(JLabel.CENTER);
 		titulo.setFont(new Font("Baskerville Old Face", Font.BOLD, 30));
 		acceder.add(titulo);
 
+		JTextArea ayudaAcceso = new JTextArea();
+		ayudaAcceso.setText("Para acceder al sistema, sigue los siguientes pasos:\n\n" +
+		                    "1. Ingresa tu nombre de usuario y contraseña en los campos correspondientes.\n" +
+		                    "2. Presiona el botón 'Iniciar sesión'.\n" +
+		                    "3. Si tus datos son correctos, podrás ingresar al sistema.\n\n" +
+		                    "Recuerda que tus credenciales son personales, no las compartas.");
+		ayudaAcceso.setFont(new Font("Baskerville Old Face", Font.PLAIN, 20));
+		ayudaAcceso.setOpaque(false);
+		ayudaAcceso.setBounds(150, 250, 700, 300);
+		acceder.add(ayudaAcceso);
+
+		JButton boton = new JButton("Ir al login");
+		boton.setBounds(400, 600, 200, 50);
+		boton.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		boton.setBackground(Color.CYAN);
+		acceder.add(boton);
+		
+		boton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("login");
+			}
+
+		});
+		
+		JButton boton1 = new JButton("Regresar al login");
+		boton1.setBounds(600, 600, 200, 50);
+		boton1.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		boton1.setBackground(Color.CYAN);
+		acceder.add(boton1);
+		
+		boton1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("login");
+			}
+
+		});
+
+
+
 		return acceder;
+
 
 	}
 
 	public JPanel olvide_contraseña() {
 		JPanel olvide = new JPanel();
 
-		olvide.setBackground(Color.red);
+		olvide.setBackground(Color.pink);
 		olvide.setOpaque(true);
-		olvide.setSize(500, 700);
+		olvide.setSize(1000, 1000);
 		olvide.setLocation(0, 0);
-		olvide.setLayout(null); // Poder colocar las cosas donde nosotros queramos
+		olvide.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
+		olvide.setLayout(null); 
 
-		JLabel titulo = new JLabel("¿Que pasa si olvide mi contraseña?");
-		titulo.setSize(450, 100);
-		titulo.setOpaque(true);
+		JLabel titulo = new JLabel("¿Qué pasa si olvidé mi contraseña?");
+		titulo.setSize(600, 100);
+		titulo.setOpaque(false);
 		titulo.setBackground(Color.CYAN);
-		titulo.setLocation(250, 250);
+		titulo.setLocation(200, 100);
+		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 5));
+
 		titulo.setHorizontalAlignment(JLabel.CENTER);
 		titulo.setFont(new Font("Baskerville Old Face", Font.BOLD, 30));
 		olvide.add(titulo);
 
-		return olvide;
+		JTextArea ayudaTexto = new JTextArea();
+		ayudaTexto.setText("Si olvidaste tu contraseña, no te preocupes.\n\n" +
+		                   "Debes comunicarte con el administrador del sistema\n" +
+		                   "o enviar un correo a: diegoemiln_23@uabcs.com\n\n" +
+		                   "Ellos te ayudarán a restablecer tu contraseña\n" +
+		                   "y podrás acceder nuevamente a tu cuenta.");
+		ayudaTexto.setFont(new Font("Baskerville Old Face", Font.PLAIN, 20));
+		ayudaTexto.setOpaque(false);
+		ayudaTexto.setBounds(200, 250, 600, 300);
+		olvide.add(ayudaTexto);
 
+		JButton boton = new JButton("Regresar");
+		boton.setBounds(400, 600, 200, 50);
+		boton.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		boton.setBackground(Color.CYAN);
+		olvide.add(boton);
+
+		JButton boton1 = new JButton("Regresar al login");
+		boton1.setBounds(600, 600, 200, 50);
+		boton1.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		boton1.setBackground(Color.CYAN);
+		olvide.add(boton1);
+		
+		boton1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("login");
+			}
+
+		});
+	
+		return olvide;
 	}
 	
 	public void router(String route) {
@@ -758,6 +1096,10 @@ public class Ventana extends JFrame {
 		if (route.equals("olvide")) {
 			this.add(this.olvide_contraseña());
 		}
+		if (route.equals("login")) {
+			this.add(this.login());
+		}
+		
 
 
 		this.repaint();
@@ -769,8 +1111,10 @@ public class Ventana extends JFrame {
 
 		tabla.setBackground(Color.PINK);
 		tabla.setOpaque(true);
-		tabla.setSize(1000, 700);
+		tabla.setSize(1000, 1000);
 		tabla.setLocation(0, 0);
+        tabla.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
+
 		tabla.setLayout(null); // Poder colocar las cosas donde nosotros queramos
 
 		JLabel titulo = new JLabel("Bienvenidos");
@@ -891,4 +1235,11 @@ public class Ventana extends JFrame {
 		return tabla;
 	}
 
+	
+	//Login Listo
+	//Registro Listo
+	//Recupera Listo
+	//Alta Listo
+	//Consulta Listo
+	//Baja Usuarios
 }
