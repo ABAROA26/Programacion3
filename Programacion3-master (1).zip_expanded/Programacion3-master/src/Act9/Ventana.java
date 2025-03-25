@@ -971,7 +971,7 @@ public class Ventana extends JFrame {
 		acceder.add(ayudaAcceso);
 
 		JButton boton = new JButton("Ir al login");
-		boton.setBounds(400, 600, 200, 50);
+		boton.setBounds(200, 600, 200, 50);
 		boton.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
 		boton.setBackground(Color.CYAN);
 		acceder.add(boton);
@@ -1041,11 +1041,21 @@ public class Ventana extends JFrame {
 		ayudaTexto.setBounds(200, 250, 600, 300);
 		olvide.add(ayudaTexto);
 
-		JButton boton = new JButton("Regresar");
-		boton.setBounds(400, 600, 200, 50);
+		JButton boton = new JButton("Restablecer contraseña");
+		boton.setBounds(200, 600, 200, 50);
 		boton.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
 		boton.setBackground(Color.CYAN);
 		olvide.add(boton);
+		
+		boton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("contraseña");
+			}
+
+		});
 
 		JButton boton1 = new JButton("Regresar al login");
 		boton1.setBounds(600, 600, 200, 50);
@@ -1099,7 +1109,9 @@ public class Ventana extends JFrame {
 		if (route.equals("login")) {
 			this.add(this.login());
 		}
-		
+		if (route.equals("contraseña")) {
+			this.add(this.recupera());
+		}
 
 
 		this.repaint();
