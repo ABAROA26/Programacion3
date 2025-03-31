@@ -28,7 +28,7 @@ public class Paint implements MouseListener, MouseMotionListener {
     private static final int ALTO_RECTANGULO = 100;
     private static final int TAMANO_TRIANGULO = 100;
 
-    private class Trazo {
+    public class Trazo {
         List<Point> puntos;
         int tamaño;
         Color color;
@@ -137,7 +137,6 @@ public class Paint implements MouseListener, MouseMotionListener {
                     }
                 }
                 
-                // Dibujar trazo actual
                 if (trazoActual != null && trazoActual.puntos.size() > 1) {
                     g2d.setStroke(new BasicStroke(trazoActual.tamaño));
                     g2d.setColor(trazoActual.color);
@@ -167,56 +166,67 @@ public class Paint implements MouseListener, MouseMotionListener {
         
         JButton btnColor1 = new JButton("");
         btnColor1.setBackground(new Color(128, 0, 255));
+        btnColor1.addActionListener(e -> colorPincel = btnColor1.getBackground());
         btnColor1.setBounds(106, 41, 85, 21);
         panelControles.add(btnColor1);
         
         JButton btnColor2 = new JButton("");
         btnColor2.setBackground(new Color(0, 255, 0));
+        btnColor2.addActionListener(e -> colorPincel = btnColor2.getBackground());
         btnColor2.setBounds(106, 133, 85, 21);
         panelControles.add(btnColor2);
         
         JButton btnColor3 = new JButton("");
         btnColor3.setBackground(new Color(255, 0, 128));
+        btnColor3.addActionListener(e -> colorPincel = btnColor3.getBackground());
         btnColor3.setBounds(10, 41, 85, 21);
         panelControles.add(btnColor3);
         
         JButton btnColor4 = new JButton("");
         btnColor4.setBackground(new Color(64, 0, 64));
+        btnColor4.addActionListener(e -> colorPincel = btnColor4.getBackground());
         btnColor4.setBounds(201, 41, 85, 21);
         panelControles.add(btnColor4);
         
         JButton btnColor5 = new JButton("");
         btnColor5.setBackground(new Color(0, 128, 255));
+        btnColor5.addActionListener(e -> colorPincel = btnColor5.getBackground());
         btnColor5.setBounds(201, 102, 85, 21);
         panelControles.add(btnColor5);
         
         JButton btnColor6 = new JButton("");
         btnColor6.setBackground(new Color(255, 128, 0));
+        btnColor6.addActionListener(e -> colorPincel = btnColor6.getBackground());
         btnColor6.setBounds(10, 72, 85, 21);
         panelControles.add(btnColor6);
         
         JButton btnColor7 = new JButton("");
         btnColor7.setBackground(new Color(0, 0, 0));
         btnColor7.setBounds(10, 102, 85, 21);
+        btnColor7.addActionListener(e -> colorPincel = btnColor7.getBackground());
         panelControles.add(btnColor7);
         
         JButton btnColor8 = new JButton("");
         btnColor8.setBackground(new Color(255, 255, 0));
+        btnColor8.addActionListener(e -> colorPincel = btnColor8.getBackground());
         btnColor8.setBounds(106, 72, 85, 21);
         panelControles.add(btnColor8);
         
         JButton btnColor9 = new JButton("");
         btnColor9.setBackground(new Color(255, 255, 255));
+        btnColor9.addActionListener(e -> colorPincel = btnColor9.getBackground());
         btnColor9.setBounds(106, 102, 85, 21);
         panelControles.add(btnColor9);
         
         JButton btnColor10 = new JButton("");
         btnColor10.setBackground(new Color(128, 255, 0));
+        btnColor10.addActionListener(e -> colorPincel = btnColor10.getBackground());
         btnColor10.setBounds(201, 72, 85, 21);
         panelControles.add(btnColor10);
         
         JButton btnColor11 = new JButton("");
         btnColor11.setBackground(new Color(255, 0, 0));
+        btnColor11.addActionListener(e -> colorPincel = btnColor11.getBackground());
         btnColor11.setBounds(10, 133, 85, 21);
         panelControles.add(btnColor11);
         
@@ -306,20 +316,26 @@ public class Paint implements MouseListener, MouseMotionListener {
         triangulo.addActionListener(e -> herramientaActual = TRIANGULO);
         panelControles.add(triangulo);
         
-        JButton cuaadrado = new JButton("CUADRADO");
+        JButton cuaadrado = new JButton("");
+        cuaadrado.setBackground(new Color(255, 255, 255));
         cuaadrado.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 10));
+        cuaadrado.setIcon(new ImageIcon("C:\\Users\\emili\\Downloads\\cuadrado.png"));
         cuaadrado.setBounds(106, 210, 85, 32);
         cuaadrado.addActionListener(e -> herramientaActual = CUADRADO);
         panelControles.add(cuaadrado);
         
-        JButton circulo = new JButton("CÍRCULO");
+        JButton circulo = new JButton("");
         circulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 10));
+        circulo.setBackground(new Color(255, 255, 255));
+        circulo.setIcon(new ImageIcon("C:\\Users\\emili\\Downloads\\registro.png"));
         circulo.setBounds(201, 210, 85, 32);
         panelControles.add(circulo);
         
-        JButton rectangulo = new JButton("RECTÁNGULO");
+        JButton rectangulo = new JButton("");
+        rectangulo.setBackground(new Color(255, 255, 255));
         rectangulo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 10));
         rectangulo.setBounds(10, 250, 85, 32);
+        rectangulo.setIcon(new ImageIcon("C:\\Users\\emili\\Downloads\\contorno-de-forma-rectangular.png"));
         rectangulo.addActionListener(e -> herramientaActual = RECTANGULO);
         panelControles.add(rectangulo);
     }
