@@ -232,6 +232,7 @@ public class Paint implements MouseListener, MouseMotionListener {
         
         JButton btnColor12 = new JButton("");
         btnColor12.setBackground(new Color(192, 192, 192));
+        btnColor12.setIcon(new ImageIcon("img\\circulo-de-color(1).png"));
         btnColor12.setBounds(201, 133, 85, 21);
         btnColor12.addActionListener(e -> {
             Color color = JColorChooser.showDialog(ventana, "Seleccione un color", colorPincel);
@@ -248,22 +249,26 @@ public class Paint implements MouseListener, MouseMotionListener {
         
         JLabel lblTamaño = new JLabel("Tamaño:");
         lblTamaño.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-        lblTamaño.setBounds(10, 345, 67, 25);
+        lblTamaño.setBounds(10, 345, 100, 25);
         panelControles.add(lblTamaño);
         
         JButton btnPincel = new JButton("PINCEL");
         btnPincel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 10));
         btnPincel.setBounds(10, 418, 85, 21);
         btnPincel.addActionListener(e -> herramientaActual = PINCEL);
+        colorPincel = Color.black;
         panelControles.add(btnPincel);
         
         JButton btnBorrador = new JButton("BORRAR");
+        btnBorrador.setBackground(Color.white);
         btnBorrador.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 10));
         btnBorrador.setBounds(201, 418, 85, 21);
         btnBorrador.addActionListener(e -> {
            ;
             herramientaActual = PINCEL;
-        });
+            tamañoPincel = 100;
+            colorPincel = btnBorrador.getBackground();
+            });
         panelControles.add(btnBorrador);
         
         JButton btnLimpiar = new JButton("LIMPIAR LIENZO");
@@ -272,7 +277,9 @@ public class Paint implements MouseListener, MouseMotionListener {
         btnLimpiar.addActionListener(e -> {
             trazos.clear();
             figuras.clear();
+            panelDibujo.setBackground(Color.WHITE);
             panelDibujo.repaint();
+
         });
         panelControles.add(btnLimpiar);
         
