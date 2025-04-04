@@ -5,13 +5,26 @@ import java.awt.EventQueue;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.Timer;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridLayout;
+import java.awt.RenderingHints.Key;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.function.Predicate;
 import java.awt.Font;
 
 public class KeyBoard implements KeyListener{
@@ -20,6 +33,27 @@ public class KeyBoard implements KeyListener{
 	private JLabel lblNewLabel;
 	private JLabel[] labels;
 	private int teclaActual = -1;
+	int seg = 0;
+    private JTextField txtEntrada = new JTextField(20);
+    private String palabraActual;
+    private long tiempoInicio;
+	Timer timer;
+	
+	 JLabel lblNewLabel_2_1;
+	
+	 ArrayList<String> palabras = new ArrayList<>(Arrays.asList(
+	            "casa", "sol", "luz", "pan", "agua", "nino", "flor", "lago", "auto", "mesa",
+	            "silla", "perro", "gato", "camino", "verde", "feliz", "nube", "dia", "luna", "rio",
+	            "libro", "cielo", "piedra", "arbol", "playa", "bosque", "montana", "naranja", "blanco", "negro",
+	            "facil", "duro", "rapido", "lento", "amigo", "hermano", "madre", "padre", "escuela", "puerta",
+	            "ventana", "pintura", "zapato", "ropa", "dinero", "trabajo", "viaje", "tren", "avion", "musica",
+	            "cuento", "pelicula", "teatro", "ciencia", "historia", "planeta", "universo", "galaxia", "atomo", "molecula",
+	            "energia", "gravedad", "sinteis", "analisis", "filosofia", "logica", "paradoja", "hipotesis", "teorema", "axioma",
+	            "algoritmo", "programa", "software", "hardware", "sistema", "estructura", "complejidad", "probabilidad", "estadistica", "parametro",
+	            "fenomeno", "contexto", "consecuencia", "epistemologia", "ontologia", "metafora", "semantica", "pragmatica", "dialectica", "transcendencia",
+	            "paradigma", "heuristica", "resiliencia", "idiosincrasia", "cacofonia", "prosopopeya", "sinestesia", "metonimia", "polifonia", "hiperbaton"
+	        ));
+	 
 	
 	private final String[] teclas = {
 			"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
@@ -79,12 +113,24 @@ public class KeyBoard implements KeyListener{
 		panel_1.setBackground(Color.lightGray);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		lblNewLabel = new JLabel("Espera");
+		lblNewLabel = new JLabel("Escribiendo:  ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		panel_1.add(lblNewLabel, BorderLayout.NORTH);
 		
-		JLabel lblNewLabel_1 = new JLabel("WA");
+		JLabel lblNewLabel_1 = new JLabel("0:0");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		panel_1.add(lblNewLabel_1, BorderLayout.EAST);
+		
+		
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.lightGray);
+		panel_1.add(panel_2, BorderLayout.SOUTH);
+		panel_2.setLayout(new BorderLayout(0, 0));
+		
+		lblNewLabel_2_1 = new JLabel("Palabra a escribir:");
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		panel_2.add(lblNewLabel_2_1);
 				
 		
 		JPanel panel_3 = new JPanel();
@@ -110,228 +156,125 @@ public class KeyBoard implements KeyListener{
 
 		}
 		
+		Random pala = new Random();
+		String palabraAleatoria = palabras.get(pala.nextInt(palabras.size()+1));
+		lblNewLabel_2_1.setText("Palabra a escribir: " + palabraAleatoria);
 		
-	/*	JLabel letra_q = new JLabel("Q");
-		letra_q.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		letra_q.setBackground(new Color(192, 192, 192));
-		letra_q.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		letra_q.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(letra_q);
-		
-		JLabel letra_w = new JLabel("W");
-		letra_w.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		letra_w.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		letra_w.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(letra_w);
-		
-		JLabel letra_e = new JLabel("E");
-		letra_e.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		letra_e.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		letra_e.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(letra_e);
-		
-		JLabel lblNewLabel_4_16_3 = new JLabel("R");
-		lblNewLabel_4_16_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4_16_3.setForeground(new Color(0, 0, 0));
-		lblNewLabel_4_16_3.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_16_3.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_16_3);
-		
-		JLabel lblNewLabel_4_16_2 = new JLabel("T");
-		lblNewLabel_4_16_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4_16_2.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_16_2.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_16_2);
-		
-		JLabel lblNewLabel_4_16_1 = new JLabel("Y");
-		lblNewLabel_4_16_1.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_16_1.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_16_1);
-		
-		JLabel lblNewLabel_4_16 = new JLabel("U");
-		lblNewLabel_4_16.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_16.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_16);
-		
-		JLabel lblNewLabel_4_15 = new JLabel("I");
-		lblNewLabel_4_15.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_15.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_15);
-		
-		JLabel lblNewLabel_4_11 = new JLabel("O");
-		lblNewLabel_4_11.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_11.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_11);
-		
-		JLabel lblNewLabel_4_13 = new JLabel("P");
-		lblNewLabel_4_13.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_13.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_13);
-		
-		
-		JLabel Borrar = new JLabel("Borrar");
-		Borrar.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		Borrar.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(Borrar);
-		
-		JLabel lblNewLabel_4_6 = new JLabel("A");
-		lblNewLabel_4_6.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4_6.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_6.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_6);
-		
-		JLabel lblNewLabel_4_12 = new JLabel("S");
-		lblNewLabel_4_12.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4_12.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_12.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_12);
-		
-		JLabel lblNewLabel_4_10 = new JLabel("D");
-		lblNewLabel_4_10.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4_10.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_10.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_10);
-		
-		JLabel lblNewLabel_4_9 = new JLabel("F");
-		lblNewLabel_4_9.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4_9.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_9.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_9);
-		
-		JLabel lblNewLabel_4_8 = new JLabel("G");
-		lblNewLabel_4_8.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4_8.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_8.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_8);
-		
-		JLabel lblNewLabel_4_7 = new JLabel("H");
-		lblNewLabel_4_7.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_7.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_7);
-		
-		JLabel lblNewLabel_4_5 = new JLabel("J");
-		lblNewLabel_4_5.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_5.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_5);
-		
-		JLabel lblNewLabel_4_4 = new JLabel("K");
-		lblNewLabel_4_4.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_4.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_4);
-		
-		JLabel lblNewLabel_4_3 = new JLabel("L");
-		lblNewLabel_4_3.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_3.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_3);
-		
-		JLabel lblNewLabel_4_2 = new JLabel("Ñ");
-		lblNewLabel_4_2.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_2.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_2);
-		
-		JLabel Enter = new JLabel("Enter");
-		Enter.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		Enter.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(Enter);
-		
-		JLabel lblNewLabel_4_1 = new JLabel("Z");
-		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4_1.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_1.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_1);
-		
-		JLabel lblNewLabel_4_ = new JLabel("X");
-		lblNewLabel_4_.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		lblNewLabel_4_.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		lblNewLabel_4_.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(lblNewLabel_4_);
-		
-		JLabel letra_C = new JLabel("C");
-		letra_C.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		letra_C.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		letra_C.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(letra_C);
-		
-		JLabel letra_V = new JLabel("V");
-		letra_V.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		letra_V.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		letra_V.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(letra_V);
-		
-		JLabel letra_B = new JLabel("B");
-		letra_B.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		letra_B.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		letra_B.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(letra_B);
-		
-		JLabel letra_N = new JLabel("N");
-		letra_N.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		letra_N.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		letra_N.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(letra_N);
-		
-		JLabel letra_M = new JLabel("M");
-		letra_M.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		letra_M.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		letra_M.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(letra_M);
-		
-		JLabel Coma = new JLabel(",");
-		Coma.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
-		Coma.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		Coma.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(Coma);
-		
-		JLabel Punto = new JLabel(".");
-		Punto.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
-		Punto.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		Punto.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(Punto);
-		
-		JLabel Guion = new JLabel("-");
-		Guion.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
-		Guion.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		Guion.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(Guion);
-		
-		JLabel Espacio = new JLabel("Espacio");
-		Espacio.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		Espacio.setBorder(BorderFactory.createLineBorder(Color.cyan, 5));
-		Espacio.setHorizontalAlignment(JLabel.CENTER);
-		panel_3.add(Espacio);
-*/
+		ActionListener taskPerformer = new ActionListener() {
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+			String [] split_String = lblNewLabel_1.getText().split(":");
+			int mil = Integer.parseInt(split_String[1]);
+			
+			mil += 1;
+			
+			if(mil >= 10) {
+				seg++;
+				mil=1;
+			}
+			
+			lblNewLabel_1.setText(seg + ":" + mil + "");
+		}
+		};
+		
+		 
+	
+		
+		timer = new Timer(100, taskPerformer);
+		
+		
 	}
+	
+	
+	
+	  private Color colorAle() {
+		  Random alea = new Random();
+		  return new Color(alea.nextInt(256), alea.nextInt(256), alea.nextInt(256));
+	  }
+	  
+	  private void nuevaPalabra() {
+	        palabraActual = palabras.get(new Random().nextInt(palabras.size()));
+	        lblNewLabel_2_1.setText("Palabra a escribir: " + palabraActual);
+	        txtEntrada.setText("");
+	        tiempoInicio = System.currentTimeMillis();
+	        seg = 0;
+	        if (timer != null) timer.stop();
+	    }
+
 	
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int keyCode = e.getKeyCode();
-		String teclaPresionada = KeyEvent.getKeyText(keyCode);
-		lblNewLabel.setText("Tecla: " + teclaPresionada);
+
 		
-		  if (teclaActual != -1) {
+		  int keyCode = e.getKeyCode();
+	        String teclaPresionada = KeyEvent.getKeyText(keyCode);
+	        
+	        if (txtEntrada.getText().isEmpty() && !timer.isRunning()) {
+	            tiempoInicio = System.currentTimeMillis();
+	            timer.start();
+	        }
+	        
+	        if (teclaActual != -1) {
 	            labels[teclaActual].setBackground(Color.PINK);
 	        }
-		
-		 for (int i = 0; i < teclas.length; i++) {
-	            // Comparar con letras normales
+	        
+	        for (int i = 0; i < teclas.length; i++) {
 	            if (teclaPresionada.equalsIgnoreCase(teclas[i])) {
-	                labels[i].setBackground(Color.YELLOW);
-	                teclaActual=i;
-	                return;
+	                labels[i].setBackground(colorAle());
+	                teclaActual = i;
+	                break;
 	            }
-		 }
+	        }
+	        
+	        if (keyCode == KeyEvent.VK_ENTER) {
+	            validarPalabra();
+	        } else if (keyCode == KeyEvent.VK_BACK_SPACE) {
+	            String texto = txtEntrada.getText();
+	            if (!texto.isEmpty()) {
+	                txtEntrada.setText(texto.substring(0, texto.length() - 1));
+	            }
+	        }
 		 
 		 
 	};
 	
+	 private void validarPalabra() {
+		 
+	        timer.stop();
+	        double tiempo = (System.currentTimeMillis() - tiempoInicio) / 1000.0;
+	        
+	        if (txtEntrada.getText().equals(palabraActual)) {
+	            JOptionPane.showMessageDialog(frame, 
+	                "¡Correcto!\nTiempo: " + String.format("%.2f", tiempo) + " segundos",
+	                "Resultado", 
+	                JOptionPane.INFORMATION_MESSAGE);
+	        } else {
+	            JOptionPane.showMessageDialog(frame, 
+	                "Incorrecto. Era: " + palabraActual + "\nTiempo: " + String.format("%.2f", tiempo) + "s",
+	                "Resultado", 
+	                JOptionPane.WARNING_MESSAGE);
+	        }
+	        
+	        nuevaPalabra();
+	    }
+
+	
+
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	
+		   char c = e.getKeyChar();
+	        if (c != KeyEvent.CHAR_UNDEFINED && !Character.isISOControl(c)) {
+	            txtEntrada.setText(txtEntrada.getText() + c);
+	            lblNewLabel.setText("Escribiendo: " + txtEntrada.getText());
+	        }// TODO Auto-generated method stub
 	}
-
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
