@@ -232,15 +232,11 @@ public class KeyBoard implements KeyListener{
 	        
 	        if (keyCode == KeyEvent.VK_ENTER) {
 	            validarPalabra();
-	        } else if (keyCode == KeyEvent.VK_BACK_SPACE) {
-	            String texto = txtEntrada.getText();
-	            if (!texto.isEmpty()) {
-	                txtEntrada.setText(texto.substring(0, texto.length() - 1));
-	            }
+	        } 
 	        }
 		 
 		 
-	};
+	
 	
 	 private void validarPalabra() {
 		 
