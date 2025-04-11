@@ -8,6 +8,7 @@ import javax.swing.Timer;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -33,6 +34,10 @@ public class Pacman implements KeyListener {
     private List<Player> paredes = new ArrayList<>();
     Timer timer;
     private int lastPress = 0;
+    private long tiempoInicio = 0;
+    private boolean tiempoCorriendo = false;
+    private Timer timerTiempo;
+    private JLabel  label_tiempo = new JLabel("Tiempo: 0s");
     
 
 
@@ -81,9 +86,15 @@ public class Pacman implements KeyListener {
 		panel_norte.setLayout(new BorderLayout(0, 0));
 		
 		JLabel label_score = new JLabel("Score");
+		label_score.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		label_score.setForeground(new Color(255, 255, 255));
 		label_score.setBackground(new Color(128, 0, 128));
 		panel_norte.add(label_score);
+		
+		label_tiempo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		label_tiempo.setForeground(new Color(255, 255, 255));
+		label_tiempo.setBackground(new Color(128, 0, 128));
+		panel_norte.add(label_tiempo, BorderLayout.SOUTH);
 		
 		JPanel panel_sur = new JPanel();
 		panel_sur.setBackground(new Color(128, 0, 128));
@@ -129,12 +140,26 @@ public class Pacman implements KeyListener {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				update();
-				}
-			};
+
+				
+			}
+		};
+			
+			
 			timer = new Timer(1, taskPerformer);
 		
-		
-		
+			 timerTiempo = new Timer(1000, new ActionListener() {
+			        @Override
+			        public void actionPerformed(ActionEvent e) {
+			            if (tiempoCorriendo) {
+			                long segundos = (System.currentTimeMillis() - tiempoInicio) / 1000;
+			                label_tiempo.setText("Tiempo: " + segundos + "s");
+			            }
+			        }
+			    });
+			    timerTiempo.start();
+				panel_norte.add(label_tiempo, BorderLayout.SOUTH);
+				 		
 	}
 	
 	//x 475 y 200
@@ -167,7 +192,15 @@ public class Pacman implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+
+		 int key = e.getKeyCode();
+		    
+		    if ((key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT || 
+		         key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) && !tiempoCorriendo) {
+		        tiempoInicio = System.currentTimeMillis();
+		        tiempoCorriendo = true;
+		    }
+		    
 		lastPress = e.getKeyCode();
 		
 		timer.start();
