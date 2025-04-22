@@ -16,9 +16,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
@@ -38,6 +41,9 @@ public class Pacman implements KeyListener {
     private boolean tiempoCorriendo = false;
     private Timer timerTiempo;
     private JLabel  label_tiempo = new JLabel("Tiempo: 0s");
+    private List<Player> puntos = new ArrayList<>();
+    private int score = 0;
+    private JLabel label_score;
     
 
 
@@ -75,8 +81,24 @@ public class Pacman implements KeyListener {
 		
 		pacman = new Player(475,200,30,30,Color.yellow);
 		
-		paredes.add(new Player(120, 150, 200, 30, Color.PINK));
-		paredes.add(new Player(350, 300, 200, 30, Color.PINK));
+		Color colo_pared = new Color(0,0,0,0);
+		colo_pared =  Color.BLUE;
+		
+		
+		//Tamaño drawing panel 900 * 500
+		
+		//Cadro donde aparece el pacman
+		paredes.add(new Player(370, 155, 20, 140, colo_pared));
+		paredes.add(new Player(575, 155, 20, 140, colo_pared));
+		
+		paredes.add(new Player(385, 275, 200, 20, colo_pared));
+		paredes.add(new Player(385, 155, 60, 20, colo_pared));
+		paredes.add(new Player(525, 155, 60, 20, colo_pared));
+
+
+		
+		//Paredes de los costados
+		paredes.add(new Player(875, 50, 20, 350, colo_pared));
 
 		
 		
@@ -85,11 +107,16 @@ public class Pacman implements KeyListener {
 		frame.getContentPane().add(panel_norte, BorderLayout.NORTH);
 		panel_norte.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label_score = new JLabel("Score");
-		label_score.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		label_score.setForeground(new Color(255, 255, 255));
-		label_score.setBackground(new Color(128, 0, 128));
+		label_score = new JLabel("Score: 0");
+	    label_score.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+	    label_score.setForeground(Color.WHITE);
 		panel_norte.add(label_score);
+		
+		  // Crear mapa completo
+	    crearMapa();
+	    // Crear bolitas
+	    crearPuntos();
+	    
 		
 		label_tiempo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		label_tiempo.setForeground(new Color(255, 255, 255));
@@ -140,8 +167,6 @@ public class Pacman implements KeyListener {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				update();
-
-				
 			}
 		};
 			
@@ -183,9 +208,62 @@ public class Pacman implements KeyListener {
 				g2d.fillRect(pared.x, pared.y, pared.w, pared.h);
 			}
 			
-		
+			 for(Player punto : puntos) {
+			        g2d.setColor(punto.c);
+			        g2d.fillOval(punto.x, punto.y, punto.w, punto.h);
+			    }
 
 		}
+	}
+	
+	private void crearMapa() {
+	    Color colorPared = Color.BLUE;
+	    
+	  
+	    
+	    //Mapa
+	    paredes.add(new Player(150, 100, 20, 150, colorPared));
+	    paredes.add(new Player(150, 100, 200, 20, colorPared));
+	    paredes.add(new Player(350, 100, 20, 150, colorPared));
+	    paredes.add(new Player(550, 100, 20, 150, colorPared));
+	    paredes.add(new Player(550, 100, 200, 20, colorPared));
+	    paredes.add(new Player(750, 100, 20, 150, colorPared));
+	    
+	    paredes.add(new Player(250, 250, 100, 20, colorPared));
+	    paredes.add(new Player(450, 250, 100, 20, colorPared));
+	    paredes.add(new Player(650, 250, 100, 20, colorPared));
+	    
+	    paredes.add(new Player(150, 300, 20, 100, colorPared));
+	    paredes.add(new Player(150, 300, 200, 20, colorPared));
+	    paredes.add(new Player(350, 300, 20, 100, colorPared));
+	    paredes.add(new Player(550, 300, 20, 100, colorPared));
+	    paredes.add(new Player(550, 300, 200, 20, colorPared));
+	    paredes.add(new Player(750, 300, 20, 100, colorPared));
+	    
+	}
+	
+	private void crearPuntos() {
+	    // Puntos normales (pequeños)
+	    for (int i = 100; i < 870; i += 60) {
+	        for (int j = 100; j < 470; j += 60) {
+
+	        	boolean enPared = false;
+	            Player punto = new Player(i, j, 20, 20, Color.WHITE);
+	            
+	            for (Player pared : paredes) {
+	                if (punto.colision(pared)) {
+	                    enPared = true;
+	                    break;
+	                }
+	            }
+	            
+	            if (!enPared) {
+	                puntos.add(punto);
+	            }
+	        }
+	    }
+	    
+	   
 	}
 
 	
@@ -273,8 +351,36 @@ public class Pacman implements KeyListener {
 			}
 		}
 		
+		 Iterator<Player> iter = puntos.iterator();
+		    while (iter.hasNext()) {
+		        Player punto = iter.next();
+		        if (pacman.colision(punto)) {
+		            iter.remove();
+		            score += (punto.w == 8) ? 10 : 50; 
+		            label_score.setText("Score: " + score);
+		            
+		            if(puntos.isEmpty()) {
+		                timer.stop();
+		                timerTiempo.stop();
+		                int opcion = JOptionPane.showConfirmDialog(frame, 
+		                    "¡Has ganado! ¿Quieres jugar de nuevo?", 
+		                    "Felicidades", 
+		                    JOptionPane.YES_NO_OPTION);
+		                
+		                if(opcion == JOptionPane.YES_OPTION) {
+		                   // reiniciarJuego();
+		                } else {
+		                    System.exit(0);
+		                }
+		            }
+		            break;
+		        }
+		    }
+		
 		tablero.repaint();
 	}
+	
+	
 	
 	class Player {
 		
