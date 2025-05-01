@@ -26,6 +26,8 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import models.AuthModel;
+
 public class AuthView extends JFrame{
 
 	public AuthView() {
@@ -65,11 +67,11 @@ public void  login() {
 
 	panel.setLayout(null);
 	
-	/*JLabel fondo = new JLabel();
+	JLabel fondo = new JLabel();
 	//fondo.setIcon(imgIcon);
 	fondo.setBounds(290, 155, 200, 200);        
 	fondo.setOpaque(false);
-	ventana.add(fondo);*/
+	ventana.add(fondo);
 
 	/*ImageIcon contra = new ImageIcon(
 			"C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\contra2.png");
@@ -77,11 +79,11 @@ public void  login() {
 	Image imgScaledContra = imgContra.getScaledInstance(25, 30, Image.SCALE_SMOOTH);
 	ImageIcon imgIconContra = new ImageIcon(imgScaledContra);*/
 
-	/*JLabel contra1 = new JLabel();
+	JLabel contra1 = new JLabel();
 	//contra1.setIcon(imgIconContra);
 	contra1.setBounds(290, 275, 200, 200);
 	contra1.setOpaque(false);
-	panel.add(contra1);*/
+	panel.add(contra1);
 
 	/*ImageIcon flecha = new ImageIcon(
 			"C:\\Users\\emili\\OneDrive\\Documentos\\Programacion3\\Programacion3-master (1).zip_expanded\\Programacion3-master\\src\\flecha.png");
@@ -89,11 +91,11 @@ public void  login() {
 	Image scaledFlecha = imgflecha.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 	ImageIcon imgIconFlecha = new ImageIcon(scaledFlecha);*/
 
-	/*JLabel flecha1 = new JLabel();
+	JLabel flecha1 = new JLabel();
 	//flecha1.setIcon(imgIconFlecha);
 	flecha1.setBounds(570, 425, 200, 200);
 	flecha1.setOpaque(false);
-	panel.add(flecha1);*/
+	panel.add(flecha1);
 
 	/*
 	 * ImageIcon fondo1 = new
@@ -191,11 +193,13 @@ public void  login() {
 			}
 
 			if (flag1 && flag2) {
-				if (escribeCorreo.getText().equals("diegoemiln_23"))
-					;
-				if (pass.equals("123456")) {
-					JOptionPane.showMessageDialog(null, "Bienvenido al sistema", "Hello",
-							JOptionPane.WARNING_MESSAGE);
+				
+				AuthModel am = new AuthModel();
+				boolean is_login = am.login(escribeCorreo.getText(), pass);
+				
+				
+				if (is_login) {
+					JOptionPane.showMessageDialog(null, "Bienvenido al sistema");
 				} else {
 					JOptionPane.showMessageDialog(null, "Error en el acceso", "Hello", JOptionPane.ERROR_MESSAGE);
 
