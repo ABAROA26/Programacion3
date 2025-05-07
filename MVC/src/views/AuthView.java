@@ -25,6 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import models.AuthModel;
 
@@ -223,7 +224,7 @@ public void  login() {
 		public void actionPerformed(ActionEvent e) {
 
 			ventana.dispose();
-			AuthView.this.registro();
+			AuthView.this.register();
 
 		//	router("registro");
 		}
@@ -240,216 +241,251 @@ public void  login() {
 
 }
 
-public void registro() {
 
+public void register() {
 	JFrame ventana = new JFrame();
 	
+	ventana.setTitle("DISEÑO");
 	ventana.setVisible(true);
-	ventana.setSize(1000, 1000);
+	ventana.setSize(1000,1000);
+	ventana.setLayout(null);
 	ventana.setLocationRelativeTo(null);
-
-	ventana.setTitle("Login");
-
 	ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-	ventana.setMaximumSize(new Dimension(800, 800));
-	ventana.setMinimumSize(new Dimension(300, 300));
-
-	ventana.setResizable(true);
-
 	
+	Font fuente = new Font("Arial",Font.BOLD,12);
+	JPanel mipanel = new JPanel();
 	
-	
-	
-	
-	
-	JPanel regis = new JPanel();
-
-	regis.setBackground(Color.PINK);
-	regis.setOpaque(true);
-	regis.setSize(1000, 1000);
-	regis.setLocation(0, 0);
-    regis.setBorder(BorderFactory.createLineBorder(Color.CYAN, 10));
-
-	regis.setLayout(null); // Poder colocar las cosas donde nosotros queramos
-
-	JLabel titulo = new JLabel("Registrarse");
-	titulo.setSize(200, 50);
-	titulo.setOpaque(true);
-	titulo.setBackground(Color.CYAN);
-	titulo.setLocation(150, 30);
+	mipanel.setBackground(Color.PINK);
+	mipanel.setOpaque(true);
+	mipanel.setSize(1000,1000);
+	mipanel.setLocation(0,0);
+	mipanel.setLayout(null); 
+	//TITULO
+	JLabel titulo = new JLabel("REGISTRO DE USUARIO");
+	titulo.setSize(600, 60);
+	titulo.setOpaque(false);
+	titulo.setLocation(186, 70);
+	titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 2));
 	titulo.setHorizontalAlignment(JLabel.CENTER);
-	titulo.setFont(new Font("Baskerville Old Face", Font.BOLD, 30));
-	regis.add(titulo);
-
-	JLabel correo = new JLabel("Ingrese su nombre completo");
-	correo.setSize(300, 30);
-	correo.setLocation(40, 100);
-	correo.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
-	correo.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
-
-	regis.add(correo);
-
-	JTextField escribeNombre = new JTextField();
-	escribeNombre.setSize(350, 30);
-	escribeNombre.setLocation(40, 135);
-	escribeNombre.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
-	regis.add(escribeNombre);
-
-	JLabel contraseña = new JLabel("Descripcion Personal");
-	contraseña.setSize(200, 30);
-	contraseña.setLocation(40, 190);
-	contraseña.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
-	contraseña.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
-
-	regis.add(contraseña);
-
-	JTextArea descripcion = new JTextArea();
-	descripcion.setSize(350, 100);
-	descripcion.setLocation(40, 230);
-	descripcion.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
-	regis.add(descripcion);
-
-	JLabel preferencias = new JLabel("Preferencias");
-	preferencias.setSize(200, 30);
-	preferencias.setLocation(40, 340);
-	preferencias.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
-	preferencias.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
-
-	regis.add(preferencias);
-
-	JCheckBox prefe = new JCheckBox("Frio", false);
-	prefe.setSize(60, 30);
-	prefe.setLocation(40, 375);
-	prefe.setOpaque(false);
-	prefe.setFont(new Font("Baskerville Old Face", Font.BOLD, 15));
-	regis.add(prefe);
-
-	JCheckBox prefe1 = new JCheckBox("Calor", false);
-	prefe1.setSize(70, 30);
-	prefe1.setLocation(120, 375);
-	prefe1.setOpaque(false);
-
-	prefe1.setFont(new Font("Baskerville Old Face", Font.BOLD, 15));
-	// prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-	regis.add(prefe1);
-
-	JCheckBox prefe2 = new JCheckBox("Neutro", false);
-	prefe2.setSize(80, 30);
-	prefe2.setLocation(200, 375);
-	prefe2.setOpaque(false);
-
-	prefe2.setFont(new Font("Baskerville Old Face", Font.BOLD, 15));
-	// prefe.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-	regis.add(prefe2);
-
-	JLabel colonia = new JLabel("Elige la colonia donde vives");
-	colonia.setSize(300, 30);
-	colonia.setLocation(40, 420);
-	colonia.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
-	colonia.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
-
-	regis.add(colonia);
-
-	String dataset[] = { " ", "Camino Real", "Centro", "Chametla", "Centenario", "Progreso" };
-
-	JComboBox colonias = new JComboBox(dataset);
-	colonias.setSize(120, 30);
-	colonias.setLocation(40, 460);
-	colonias.setFont(new Font("Baskerville Old Face", Font.BOLD, 15));
-	regis.add(colonias);
-
-	JLabel terms = new JLabel("Terminos y Condiciones");
-	terms.setSize(300, 30);
-	terms.setLocation(40, 500);
-	terms.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
-	terms.setBorder(BorderFactory.createLineBorder(Color.CYAN, 3));
-
-	regis.add(terms);
-
-	JRadioButton acepto = new JRadioButton("Acepto los términos", true);
-	acepto.setSize(140, 20);
-	acepto.setLocation(40, 540);
-	acepto.setOpaque(false);
-
-	acepto.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-	regis.add(acepto);
-
-	JRadioButton NoAcepto = new JRadioButton("No acepto los términos", false);
-	NoAcepto.setSize(150, 20);
-	NoAcepto.setLocation(200, 540);
-	NoAcepto.setOpaque(false);
-
-	NoAcepto.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-	regis.add(NoAcepto);
-
-	ButtonGroup opcion = new ButtonGroup();
-	opcion.add(NoAcepto);
-	opcion.add(acepto);
-
-	JButton acceder = new JButton();
-	acceder.setText("Crear Cuenta");
-	acceder.setLocation(150, 590);
-	acceder.setSize(200, 50);
-	acceder.setOpaque(true);
-	acceder.setBackground(Color.CYAN);
-	acceder.setFont(new Font("Baskerville Old Face", Font.BOLD, 25));
-
-	acceder.addActionListener(new ActionListener() {
-
-		@Override
+	titulo.setFont(new Font("Broadway",Font.BOLD,40));
+	mipanel.add(titulo);
+	
+	JLabel email = new JLabel("Correo Electrónico");
+	email.setFont(new Font("Broadway", Font.BOLD, 16));
+	email.setBounds(23, 199, 223, 40);
+	email.setOpaque(false);
+	email.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	mipanel.add(email);
+	
+	JTextField emailField = new JTextField();
+	emailField.setFont(fuente);
+	emailField.setBounds(23, 263, 265, 32);
+	mipanel.add(emailField);
+	emailField.setColumns(10);
+	
+	JLabel contra_alta = new JLabel("Contraseña");
+	contra_alta.setOpaque(false);
+	contra_alta.setFont(new Font("Broadway", Font.BOLD, 16));
+	contra_alta.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	contra_alta.setBounds(23, 322, 223, 40);
+	mipanel.add(contra_alta);
+	
+	JPasswordField nueva_contraField = new JPasswordField();
+	nueva_contraField.setBounds(23, 384, 265, 32);
+	nueva_contraField.setFont(fuente);
+	mipanel.add(nueva_contraField);
+	
+	JLabel nombre = new JLabel("Nombre Completo");
+	nombre.setOpaque(false);
+	nombre.setFont(new Font("Broadway", Font.BOLD, 16));
+	nombre.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	nombre.setBounds(362, 199, 223, 40);
+	mipanel.add(nombre);
+	
+	JTextField nombre_field = new JTextField();
+	nombre_field.setColumns(10);
+	nombre_field.setFont(fuente);
+	nombre_field.setBounds(362, 263, 265, 32);
+	mipanel.add(nombre_field);
+	
+	JButton aceptar = new JButton("APLICAR Y ACEPTAR");
+	aceptar.setSize(310, 65);
+	aceptar.setLocation(530, 638);
+	aceptar.setOpaque(true);
+	aceptar.setBackground(Color.CYAN);
+	aceptar.setHorizontalAlignment(JLabel.CENTER);
+	aceptar.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	aceptar.setFont(new Font("Broadway", Font.BOLD, 18));
+	mipanel.add(aceptar);
+	
+	
+	
+	JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario");
+	lblNombreDeUsuario.setOpaque(false);
+	lblNombreDeUsuario.setFont(new Font("Broadway", Font.BOLD, 16));
+	lblNombreDeUsuario.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	lblNombreDeUsuario.setBounds(362, 322, 223, 40);
+	mipanel.add(lblNombreDeUsuario);
+	
+	JTextField usuario_field = new JTextField();
+	usuario_field.setColumns(10);
+	usuario_field.setFont(fuente);
+	usuario_field.setBounds(362, 384, 265, 32);
+	mipanel.add(usuario_field);
+	
+	
+	JLabel nacimiento = new JLabel("Fecha de Nacimiento");
+	nacimiento.setOpaque(false);
+	nacimiento.setFont(new Font("Broadway", Font.BOLD, 16));
+	nacimiento.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	nacimiento.setBounds(710, 322, 223, 40);
+	mipanel.add(nacimiento);
+	
+	JComboBox dia = new JComboBox(new Object[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"});
+	dia.setFont(new Font("Broadway", Font.PLAIN, 17));
+	dia.setBounds(710, 384, 59, 32);
+	mipanel.add(dia);
+	
+	JComboBox mes = new JComboBox(new Object[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"});
+	mes.setFont(new Font("Broadway", Font.PLAIN, 17));
+	mes.setBounds(779, 384, 59, 32);
+	mipanel.add(mes);
+	
+	JComboBox año = new JComboBox(new Object[]{"2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997"});
+	año.setFont(new Font("Broadway", Font.PLAIN, 17));
+	año.setBounds(848, 384, 85, 32);
+	mipanel.add(año);
+	
+	JButton btn_login = new JButton("IR A LOGIN");
+	btn_login.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-
-			if (escribeNombre.getText().equals("")) {
-				escribeNombre.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
-			} else {
-				escribeNombre.setBorder(BorderFactory.createLineBorder(Color.green, 3));
-
-			}
-			if (descripcion.getText().equals("")) {
-				descripcion.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
-
-			} else {
-				descripcion.setBorder(BorderFactory.createLineBorder(Color.green, 3));
-
-			}
-
-		}
-	});
-
-	regis.add(acceder);
-
-	JButton ir_login = new JButton();
-	ir_login.setText("Ir al login");
-	ir_login.setLocation(150, 650);
-	ir_login.setSize(200, 50);
-	ir_login.setOpaque(true);
-	ir_login.setBackground(Color.CYAN);
-	ir_login.setFont(new Font("Baskerville Old Face", Font.BOLD, 25));
-
-	ir_login.addActionListener(new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-
-			//router("login");
 			ventana.dispose();
 			AuthView.this.login();
 		}
+	});
+	btn_login.setHorizontalAlignment(SwingConstants.CENTER);
+	btn_login.setFont(new Font("Broadway", Font.BOLD, 18));
+	btn_login.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	btn_login.setBackground(Color.CYAN);
+	btn_login.setBounds(166, 638, 310, 65);
+	mipanel.add(btn_login);
+	
+	JLabel verificar_contra = new JLabel("Verificar Contraseña");
+	verificar_contra.setOpaque(false);
+	verificar_contra.setFont(new Font("Broadway", Font.BOLD, 16));
+	verificar_contra.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	verificar_contra.setBounds(23, 445, 223, 40);
+	mipanel.add(verificar_contra);
+	
+	
+	JPasswordField passwordField = new JPasswordField();
+	passwordField.setFont(fuente);
+	passwordField.setBounds(23, 507, 265, 32);
+	mipanel.add(passwordField);
+	
+	JLabel empresa = new JLabel("Empresa");
+	empresa.setOpaque(false);
+	empresa.setFont(new Font("Broadway", Font.BOLD, 16));
+	empresa.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	empresa.setBounds(362, 445, 223, 40);
+	mipanel.add(empresa);
+	
+	JTextField empresa_field = new JTextField();
+	empresa_field.setColumns(10);
+	empresa_field.setFont(fuente);
+	empresa_field.setBounds(362, 507, 265, 32);
+	mipanel.add(empresa_field);
+	
+	JLabel ambito_empresa = new JLabel("Ámbito de la Empresa");
+	ambito_empresa.setOpaque(false);
+	ambito_empresa.setFont(new Font("Broadway", Font.BOLD, 16));
+	ambito_empresa.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+	ambito_empresa.setBounds(710, 445, 223, 40);
+	mipanel.add(ambito_empresa);
+	
+	JComboBox ambito_comboBox = new JComboBox(new Object[]{"Tecnología", "Salud", "Educación", "Comercio", "Otro"});
+	ambito_comboBox.setFont(new Font("Broadway", Font.PLAIN, 17));
+	ambito_comboBox.setBounds(710, 507, 223, 32);
+	mipanel.add(ambito_comboBox);
+	
+	JRadioButton terms1 = new JRadioButton("Acepto los términos y condiciones", true);
+	terms1.setSize(240,40);
+	terms1.setFont(fuente);
+	terms1.setLocation(226,589);
+	terms1.setOpaque(false);
+	mipanel.add(terms1);
+	
+	JRadioButton terms2 = new JRadioButton("No acepto los términos y condiciones");
+	terms2.setSize(240,40);
+	terms2.setFont(fuente);
+	terms2.setLocation(530, 589);
+	terms2.setOpaque(false);
+	mipanel.add(terms2);
+	
+	ButtonGroup terms_group = new ButtonGroup();
+	terms_group.add(terms1);
+	terms_group.add(terms2);
+	
+	aceptar.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+	        String nombre = nombre_field.getText();
+	        String email = emailField.getText();
+	        String usuario = usuario_field.getText();
+	        String password = new String(nueva_contraField.getPassword());
+	        String confirmPassword = new String(passwordField.getPassword());
+	        String empresa = empresa_field.getText();
 
+	        if (nombre.isEmpty() || email.isEmpty() || usuario.isEmpty() || 
+	            password.isEmpty() || empresa.isEmpty()) {
+	            JOptionPane.showMessageDialog(ventana, 
+	                "Todos los campos son obligatorios.", 
+	                "Error", 
+	                JOptionPane.ERROR_MESSAGE);
+	            return;
+	        }
+
+	        if (!password.equals(confirmPassword)) {
+	            JOptionPane.showMessageDialog(ventana, 
+	                "Las contraseñas no coinciden.", 
+	                "Error", 
+	                JOptionPane.ERROR_MESSAGE);
+	            return;
+	        }
+
+	        if (usuario.contains(" ")) {
+	            JOptionPane.showMessageDialog(ventana, 
+	                "El nombre de usuario no puede contener espacios.", 
+	                "Error", 
+	                JOptionPane.ERROR_MESSAGE);
+	            return;
+	        }
+
+	        AuthModel modelo = new AuthModel();
+	        boolean registroExitoso = modelo.registrarUsuario(nombre, email, usuario, password, empresa);
+
+	        if (registroExitoso) {
+	            JOptionPane.showMessageDialog(ventana, 
+	                "¡Registro exitoso!", 
+	                "Éxito", 
+	                JOptionPane.INFORMATION_MESSAGE);
+	            ventana.dispose(); 
+	            login(); 
+	        } else {
+	            JOptionPane.showMessageDialog(ventana, 
+	                "Error al guardar los datos.", 
+	                "Error", 
+	                JOptionPane.ERROR_MESSAGE);
+	        }
+	    }
 	});
 	
-	
 
-	regis.add(ir_login);
 	
-
-	ventana.add(regis);
+	ventana.add(mipanel);
 	ventana.repaint();
 	ventana.revalidate();
-	ventana.setVisible(true);
-	
-	
 }
 
 

@@ -19,7 +19,7 @@ public void login() {
 	
 	public void register() {
 		
-		vista.registro();
+		vista.register();
 	}
 
 }

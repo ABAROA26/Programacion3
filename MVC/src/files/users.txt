@@ -1,2 +1,0 @@
-diego,abaroa,diego@gmail.com,123456
-carlos,hernandez,carlos@hotmail.com,123456
